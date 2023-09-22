@@ -15,6 +15,10 @@ public class Chainable : MonoBehaviour
     public bool canTriggerHits = false;
     public bool hasBeenHit = false;
 
+    //line rendering
+    List<Vector3> startCoords = new List<Vector3>();
+    List<Vector3> endCoords = new List<Vector3>();
+
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -41,7 +45,29 @@ public class Chainable : MonoBehaviour
     public void DoHitCheck()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, hitRange);
-        foreach (var collider in colliders)
+
+        startCoords = new List<Vector3>();
+        endCoords = new List<Vector3>();
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].TryGetComponent(out Chainable chainable))
+            {
+                if (chainable != this && chainable.hasBeenHit == false)
+                {
+                    Debug.Log(name + " found: " + chainable.name);
+
+                    chainable.GetHit();
+
+                    //line rendering
+                    startCoords.Add(transform.position); //if(!startCoords.Contains(transform.position)) 
+                    endCoords.Add(chainable.transform.position); //if(!endCoords.Contains(chainable.transform.position)) 
+                }
+            }
+        }
+
+        //original
+        /*foreach (var collider in colliders)
         {
             if(collider.TryGetComponent(out Chainable chainable))
             {
@@ -50,10 +76,9 @@ public class Chainable : MonoBehaviour
                     Debug.Log(name + " found: " + chainable.name);
 
                     chainable.GetHit();
-
                 }
             }
-        }
+        }*/
     }
 
     public void GetHit()
@@ -71,5 +96,15 @@ public class Chainable : MonoBehaviour
         Gizmos.color = Color.white;
         if(!hasBeenHit)
             Gizmos.DrawWireSphere(transform.position, hitRange);
+
+        Gizmos.color = Color.red;
+        if(startCoords.Count > 0)
+        {
+            for (int i = 0; i < startCoords.Count; i++)
+            {
+                Gizmos.DrawLine(startCoords[i], endCoords[i]);
+            }
+        }
+        
     }
 }
