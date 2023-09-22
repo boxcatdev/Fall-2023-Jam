@@ -7,9 +7,12 @@ public class LassoProjectile : MonoBehaviour
     [SerializeField] int _lassoRange;
     [SerializeField] int _pullForce;
 
-    private Rigidbody _rb;
     private Vector3 _pullTowards;
 
+    private void Start()
+    {
+        Destroy(gameObject, 3f);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "ground")
@@ -20,9 +23,7 @@ public class LassoProjectile : MonoBehaviour
             {
                 if(_enemiesInRange[i].gameObject.TryGetComponent(out Chainable chainable))
                 {
-                    _rb = _enemiesInRange[i].GetComponent<Rigidbody>();
-                    _enemiesInRange[i].transform.position = Vector3.MoveTowards(_enemiesInRange[i].transform.position, _pullTowards, +_pullForce * Time.deltaTime);
-                    //_rb.isKinematic = true;
+                    _enemiesInRange[i].transform.position = Vector3.MoveTowards(_enemiesInRange[i].transform.position, _pullTowards, _pullForce * Time.deltaTime);
                 }
             }
         }

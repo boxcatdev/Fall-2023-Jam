@@ -49,8 +49,6 @@ public class Lasso : MonoBehaviour
             _chargeBar.gameObject.SetActive(false);
             _currentCharge = 0;
         }
-
-
     }
 
     private void ChargingBar()
@@ -77,9 +75,9 @@ public class Lasso : MonoBehaviour
 
     private void ThrowLasso()
     {
-        _lasso = Instantiate(_lasso, _spawnPos, _spawnRotation);
-        _lassoRb = _lasso.GetComponent<Rigidbody>();
-        _lassoRb.AddRelativeForce(Vector3.forward * _currentCharge * _chargeMultiplier);
+        var lasso = Instantiate(_lasso, _spawnPos, _spawnRotation);
+        var lassoRb = lasso.GetComponent<Rigidbody>();
+        lassoRb.AddRelativeForce(Vector3.forward * _currentCharge * _chargeMultiplier);
     }
 
 }
