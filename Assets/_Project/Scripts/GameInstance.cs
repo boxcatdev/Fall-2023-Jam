@@ -8,7 +8,14 @@ public class GameInstance : MonoBehaviour
 {
     public static GameInstance Instance;
 
+    //only for during development stuff
     public bool debug = false;
+
+    #region Game State Stuff
+
+    public bool isPaused = false;
+
+    #endregion
 
     private void Awake()
     {
@@ -36,10 +43,14 @@ public class GameInstance : MonoBehaviour
         }
     }
 
-    #region
+    #region Level Loading
     public static void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Loader.Load(SceneManager.GetActiveScene().name);
+    }
+    public static void QuitGame()
+    {
+        Application.Quit();
     }
     #endregion
 }
