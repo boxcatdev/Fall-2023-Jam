@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     {
         if(other.GetComponent<Enemy>())
         {
-            _rb.Sleep();
+           _rb.Sleep();
         }
     }
 }

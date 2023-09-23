@@ -13,18 +13,22 @@ public class Lasso : MonoBehaviour
     [SerializeField] private float _maxCharge;
     [SerializeField] private float _chargePerSecond;
     [SerializeField] private float _chargeMultiplier;
+    [SerializeField] private float _rechargeTime;
+    [SerializeField] private Slider _cooldownSlider;
 
     private float _currentCharge = 0;
     private bool _chargingUp = true;
-    private Rigidbody _lassoRb;
     private Vector3 _spawnPos;
     private Quaternion _spawnRotation;
-    private GameObject[] _enemiesInLasso;
+    private float _currentRechargeProgess = 0;
+    private bool _isReady = true;
 
     // Start is called before the first frame update
     void Start()
     {
         _chargeBar.maxValue = _maxCharge;
+        _cooldownSlider.maxValue = _rechargeTime;
+        _cooldownSlider.value = _rechargeTime;
     }
 
     // Update is called once per frame
@@ -32,7 +36,7 @@ public class Lasso : MonoBehaviour
     {
         _spawnPos = _lassoSpawnPoint.transform.position;
         _spawnRotation = _lassoSpawnPoint.transform.rotation;
-        if (Mouse.current.rightButton.isPressed)
+        if (Mouse.current.rightButton.isPressed && _isReady)
         {
             //made slider appear
             if(_chargeBar.gameObject.activeInHierarchy == false)
@@ -43,11 +47,24 @@ public class Lasso : MonoBehaviour
             ChargingBar();
         }
         // on right mouse release throw lasso
-        if(Mouse.current.rightButton.wasReleasedThisFrame)
+        if(Mouse.current.rightButton.wasReleasedThisFrame && _isReady)
         {
             ThrowLasso();
             _chargeBar.gameObject.SetActive(false);
             _currentCharge = 0;
+            _cooldownSlider.value = 0;
+            _isReady = false;
+        }
+        //if on cooldown countdown
+        if(!_isReady)
+        {
+            _currentRechargeProgess += Time.deltaTime;
+            _cooldownSlider.value = _currentRechargeProgess;
+            if (_currentRechargeProgess >= _rechargeTime)
+            {
+                _isReady = true;
+                _currentRechargeProgess = 0;
+            }
         }
     }
 
