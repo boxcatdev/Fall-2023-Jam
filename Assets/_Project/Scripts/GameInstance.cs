@@ -40,6 +40,13 @@ public class GameInstance : MonoBehaviour
             {
                 ReloadLevel();
             }
+            if (Keyboard.current.pKey.wasPressedThisFrame)
+            {
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.None;
+                else
+                    Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 
