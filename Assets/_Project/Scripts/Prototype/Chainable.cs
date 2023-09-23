@@ -65,20 +65,6 @@ public class Chainable : MonoBehaviour
                 }
             }
         }
-
-        //original
-        /*foreach (var collider in colliders)
-        {
-            if(collider.TryGetComponent(out Chainable chainable))
-            {
-                if (chainable != this && chainable.hasBeenHit == false)
-                {
-                    Debug.Log(name + " found: " + chainable.name);
-
-                    chainable.GetHit();
-                }
-            }
-        }*/
     }
 
     public void GetHit()
