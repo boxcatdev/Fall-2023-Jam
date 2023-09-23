@@ -8,7 +8,14 @@ public class GameInstance : MonoBehaviour
 {
     public static GameInstance Instance;
 
+    //only for during development stuff
     public bool debug = false;
+
+    #region Game State Stuff
+
+    public bool isPaused = false;
+
+    #endregion
 
     private void Awake()
     {
@@ -33,13 +40,24 @@ public class GameInstance : MonoBehaviour
             {
                 ReloadLevel();
             }
+            if (Keyboard.current.pKey.wasPressedThisFrame)
+            {
+                if (Cursor.lockState == CursorLockMode.Locked)
+                    Cursor.lockState = CursorLockMode.None;
+                else
+                    Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 
-    #region
+    #region Level Loading
     public static void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Loader.Load(SceneManager.GetActiveScene().name);
+    }
+    public static void QuitGame()
+    {
+        Application.Quit();
     }
     #endregion
 }
