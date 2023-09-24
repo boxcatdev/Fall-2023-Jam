@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 7765969812916127311}
   - component: {fileID: 7765969812916127304}
   - component: {fileID: -3267054377445519277}
+  - component: {fileID: 5359669150109904659}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -191,3 +192,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790112fe7de56664f8fbc3f481773ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 1
+  _damageCooldown: 2
+  _attackRange: 2
+--- !u!195 &5359669150109904659
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765969812916127305}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
