@@ -5,9 +5,13 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private GameObject _lookAtPoint;
     [SerializeField] private int _damage;
-    [SerializeField] private float _damageCooldown;
+    [SerializeField] private float _attackSpeed;
     [SerializeField] private int _attackRange;
+    [SerializeField] private bool _isRanged;
+    [SerializeField] private GameObject _projectile;
+    [SerializeField] private int _projectileSpeed;
 
     private GameObject _targetPlayer;
     private Health _playerHealth;
@@ -20,13 +24,14 @@ public class Enemy : MonoBehaviour
     {
         if (other.GetComponent<Enemy>())
         {
+            //need to make a enemies not get lasso'd inside of eachother
             _rb.Sleep();
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(!_onCooldown && other.GetComponent<Lasso>())
+        if(!_onCooldown && !_isRanged && other.GetComponent<Lasso>())
         {
             _playerHealth.TakeDamage(_damage);
             _onCooldown = true;
@@ -38,22 +43,43 @@ public class Enemy : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _targetPlayer = GameObject.FindGameObjectWithTag("Player");
         _playerHealth = _targetPlayer.GetComponent<Health>();
-        _currentDamageCooldown = _damageCooldown;
+        _currentDamageCooldown = _attackSpeed;
     }
     private void Update()
     {
         if(_targetPlayer != null)
         {
             _navMeshAgent.destination = _targetPlayer.transform.position;
+            transform.LookAt(_lookAtPoint.transform.position);
         }
+
+        if(_isRanged && Vector3.Distance(transform.position, _targetPlayer.transform.position) <= _attackRange)
+        {
+            if(_projectile != null && !_onCooldown)
+            {
+                var projectile = Instantiate(_projectile, transform.position, Quaternion.identity);
+                var projectileRb = projectile.GetComponent<Rigidbody>();
+                projectileRb.AddForce(transform.forward * _projectileSpeed);
+                _onCooldown = true;
+                Destroy(projectile, _attackSpeed);
+                projectileRb = null;
+            }
+        }
+
         if (_onCooldown)
         {
             _currentDamageCooldown -= Time.deltaTime;
             if (_currentDamageCooldown <= 0)
             {
                 _onCooldown = false;
-                _currentDamageCooldown = _damageCooldown;
+                _currentDamageCooldown = _attackSpeed;
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _attackRange);
     }
 }

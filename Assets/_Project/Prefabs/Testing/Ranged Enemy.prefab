@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: -3267054377445519277}
   - component: {fileID: 5359669150109904659}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Ranged Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192,10 +192,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790112fe7de56664f8fbc3f481773ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lookAtPoint: {fileID: 0}
   _damage: 1
   _attackSpeed: 2
-  _attackRange: 2
-  _isRanged: 0
+  _attackRange: 7
+  _isRanged: 1
+  _projectile: {fileID: 2290269239835913570, guid: dc885cbba20bda844a9567d0d61ec816,
+    type: 3}
+  _projectileSpeed: 1000
 --- !u!195 &5359669150109904659
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -210,7 +214,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
