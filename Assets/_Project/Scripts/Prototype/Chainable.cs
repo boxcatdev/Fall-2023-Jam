@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Chainable : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
+    private WaveManager waveManager;
 
     [SerializeField] Material defaultMat;
     [SerializeField] Material hitMat;
@@ -22,6 +23,7 @@ public class Chainable : MonoBehaviour
     private void Awake()
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
+        waveManager = FindObjectOfType<WaveManager>();
     }
     private void Start()
     {
@@ -39,6 +41,13 @@ public class Chainable : MonoBehaviour
             {
                 DoHitCheck();
             }
+        }
+    }
+    private void LateUpdate()
+    {
+        if(hasBeenHit && !canTriggerHits)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -65,20 +74,6 @@ public class Chainable : MonoBehaviour
                 }
             }
         }
-
-        //original
-        /*foreach (var collider in colliders)
-        {
-            if(collider.TryGetComponent(out Chainable chainable))
-            {
-                if (chainable != this && chainable.hasBeenHit == false)
-                {
-                    Debug.Log(name + " found: " + chainable.name);
-
-                    chainable.GetHit();
-                }
-            }
-        }*/
     }
 
     public void GetHit()
@@ -86,6 +81,8 @@ public class Chainable : MonoBehaviour
         hasBeenHit = true;
 
         if (hitMat != null) meshRenderer.material = hitMat;
+
+        waveManager.RemoveEnemy();
 
         DoHitCheck();
     }
