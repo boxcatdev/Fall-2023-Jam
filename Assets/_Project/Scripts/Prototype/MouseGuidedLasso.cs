@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class LassoGuided : MonoBehaviour
+public class MouseGuidedLasso : MonoBehaviour
 {
     [SerializeField] Transform _mouseTarget;
     [SerializeField] Transform _lassoVisual;
@@ -57,8 +57,8 @@ public class LassoGuided : MonoBehaviour
         //move target to mouse position
         if (_lassoVisual != null && _mouseTarget != null)
         {
-            if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint();
-            if (_mouseTarget.gameObject.activeInHierarchy) _mouseTarget.position = Utility.GetMouseHitPoint();
+            if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint(0f);
+            if (_mouseTarget.gameObject.activeInHierarchy) _mouseTarget.position = Utility.GetMouseHitPoint(0f);
         }
         #endregion
 
@@ -203,7 +203,7 @@ public class LassoGuided : MonoBehaviour
             if (_enemiesInRange[i].gameObject.TryGetComponent(out Chainable chainable))
             {
                 _enemiesInRange[i].transform.position = Vector3.MoveTowards(_enemiesInRange[i].transform.position, 
-                    Utility.GetMouseHitPoint(), pullForce * Time.deltaTime);
+                    Utility.GetMouseHitPoint(0f), pullForce * Time.deltaTime);
             }
         }
     }
