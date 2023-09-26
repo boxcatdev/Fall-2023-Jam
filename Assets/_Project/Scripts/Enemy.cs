@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
         if(_targetPlayer != null)
         {
             _navMeshAgent.destination = _targetPlayer.transform.position;
+            _lookAtPoint.transform.position = _targetPlayer.transform.position + new Vector3(0,1,0);
             transform.LookAt(_lookAtPoint.transform.position);
         }
 

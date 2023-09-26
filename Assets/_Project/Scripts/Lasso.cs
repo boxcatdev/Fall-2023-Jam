@@ -92,7 +92,8 @@ public class Lasso : MonoBehaviour
 
     private void ThrowLasso()
     {
-        var lasso = Instantiate(_lasso, _spawnPos, _spawnRotation);
+        Quaternion newLassoRotation = Quaternion.Euler(0, Camera.main.transform.localRotation.y, Camera.main.transform.localRotation.z);
+        var lasso = Instantiate(_lasso, _spawnPos, newLassoRotation);
         var lassoRb = lasso.GetComponent<Rigidbody>();
         lassoRb.AddRelativeForce(Vector3.forward * _currentCharge * _chargeMultiplier);
     }
