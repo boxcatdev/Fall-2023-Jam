@@ -406,8 +406,8 @@ MonoBehaviour:
   _mouseTarget: {fileID: 1184749764}
   _lassoVisual: {fileID: 320319797}
   lassoSize: 0
-  maxSize: 5
-  growRate: 0.5
+  maxSize: 8
+  growRate: 2.5
   isMovingLasso: 0
   isChangingSize: 0
 --- !u!4 &519200113
