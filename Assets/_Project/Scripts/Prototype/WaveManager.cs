@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WaveManager : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class WaveManager : MonoBehaviour
     private Spawner spawner;
 
     //properties
+    [Header("Wave Properties")]
     public float initialStartDelay = 5.0f;
+    [SerializeField]
+    private TextMeshProUGUI _waveCounter;
+    [SerializeField]
+    private TextMeshProUGUI _countdownTimer;
 
     //waves
     [Space]
     public Wave[] waves;
     private Queue<Wave> _waveQueue;
+    public int currentWaveNum { get; private set; }
 
     //private
     private bool _hasStarted = false;
@@ -77,6 +84,11 @@ public class WaveManager : MonoBehaviour
             if (initialStartDelay <= 0)
             {
                 _hasStarted = true;
+                if (_countdownTimer != null) _countdownTimer.gameObject.SetActive(false);
+            }
+            else
+            {
+                if (_countdownTimer != null) _countdownTimer.text = Utility.DisplayTimeSeconds(initialStartDelay);
             }
         }
         #endregion
@@ -106,9 +118,15 @@ public class WaveManager : MonoBehaviour
                     Debug.Log("New Wave");
 
                     Wave currentWave = _waveQueue.Dequeue();
+                    
+                    //update wave display
+                    currentWaveNum++;
+                    if (_waveCounter != null) _waveCounter.text = currentWaveNum.ToString();
 
+                    // loop through wave properties
                     if (currentWave.spawnAll)
                     {
+                        int spawnPointCounter = 0;
                         //spawn all the enemies at once
                         foreach (var type in currentWave.enemyTypes)
                         {
@@ -122,12 +140,14 @@ public class WaveManager : MonoBehaviour
 
                                 Vector3 spawnPoint = Vector3.zero;
 
-                                if (i < spawner.GetSpawnPointCount())
-                                    spawnPoint = spawner.GetSpecificSpawnPoint(i);
+                                if (spawnPointCounter < spawner.GetSpawnPointCount())
+                                    spawnPoint = spawner.GetSpecificSpawnPoint(spawnPointCounter);
                                 else
-                                    spawnPoint = spawner.GetSpecificSpawnPoint(i - spawner.GetSpawnPointCount());
+                                    spawnPoint = spawner.GetSpecificSpawnPoint(spawnPointCounter - spawner.GetSpawnPointCount());
 
                                 Instantiate(type.prefab, spawnPoint, Quaternion.identity);
+
+                                spawnPointCounter++;
                             }
 
                             _enemiesLeft += type.count;
@@ -170,6 +190,7 @@ public class WaveManager : MonoBehaviour
             Debug.Log("Wave count: " + waves.Length);
 
             _canSpawn = true;
+            currentWaveNum = -1;
         }
         else
         {

@@ -192,10 +192,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790112fe7de56664f8fbc3f481773ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lookAtPoint: {fileID: 0}
   _damage: 1
   _attackSpeed: 2
   _attackRange: 2
   _isRanged: 0
+  _projectile: {fileID: 0}
+  _projectileSpeed: 0
 --- !u!195 &5359669150109904659
 NavMeshAgent:
   m_ObjectHideFlags: 0
