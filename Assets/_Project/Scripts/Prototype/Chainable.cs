@@ -82,7 +82,7 @@ public class Chainable : MonoBehaviour
 
         if (hitMat != null) meshRenderer.material = hitMat;
 
-        waveManager.RemoveEnemy();
+        if(waveManager != null) waveManager.RemoveEnemy();
 
         DoHitCheck();
     }

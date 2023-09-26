@@ -50,7 +50,8 @@ public class Lasso : MonoBehaviour
         if(Mouse.current.rightButton.wasReleasedThisFrame && _isReady)
         {
             ThrowLasso();
-            _chargeBar.gameObject.SetActive(false);
+            //_chargeBar.gameObject.SetActive(false);
+            _chargeBar.value = 0;
             _currentCharge = 0;
             _cooldownSlider.value = 0;
             _isReady = false;
