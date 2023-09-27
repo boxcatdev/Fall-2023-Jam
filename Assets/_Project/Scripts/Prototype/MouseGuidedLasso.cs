@@ -24,7 +24,10 @@ public class MouseGuidedLasso : MonoBehaviour
     }
     private void Start()
     {
-        RefreshVisuals();   
+        RefreshVisuals();
+
+        if (_mouseTarget != null) _mouseTarget.SetParent(null);
+        if (_lassoVisual != null) _lassoVisual.SetParent(null);
     }
     private void Update()
     {
@@ -41,11 +44,13 @@ public class MouseGuidedLasso : MonoBehaviour
         }
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            StartGrow();
+            //StartGrow();
+            StartShrink();
         }
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            StopGrow();
+            //StopGrow();
+            StopShrink();
         }
 
         //change cursor state
@@ -66,11 +71,16 @@ public class MouseGuidedLasso : MonoBehaviour
         if (isChangingSize)
         {
             Debug.Log("Resizing");
-            lassoSize += growRate * Time.deltaTime;
+            lassoSize -= growRate * Time.deltaTime;
 
-            if(lassoSize >= maxSize)
+            /*if(lassoSize >= maxSize)
             {
                 lassoSize = maxSize;
+            }*/
+            if(lassoSize <= 0)
+            {
+                lassoSize = 0;
+                //StopShrink();
             }
 
             ScaleLasso(lassoSize);
@@ -180,6 +190,31 @@ public class MouseGuidedLasso : MonoBehaviour
     {
         //do action if ready
         if(isMovingLasso) DoLassoAction();
+
+        if (!isMovingLasso) return;
+
+        //switch changing bool
+        isChangingSize = false;
+        isMovingLasso = false;
+
+        RefreshVisuals();
+    }
+    private void StartShrink()
+    {
+        if (!isMovingLasso) return;
+
+        //switch changing bool
+        isChangingSize = true;
+
+        //start changing lasso size
+        lassoSize = maxSize;
+
+        RefreshVisuals();
+    }
+    private void StopShrink()
+    {
+        //do action if ready
+        //if (isMovingLasso) DoLassoAction();
 
         if (!isMovingLasso) return;
 
