@@ -47,7 +47,8 @@ public class Chainable : MonoBehaviour
     {
         if(hasBeenHit && !canTriggerHits)
         {
-            Destroy(gameObject);
+            Destroy(GetComponent<Enemy>());
+            Destroy(gameObject, 1);
         }
     }
 
