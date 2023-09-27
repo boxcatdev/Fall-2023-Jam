@@ -24,7 +24,10 @@ public class MouseGuidedLasso : MonoBehaviour
     }
     private void Start()
     {
-        RefreshVisuals();   
+        RefreshVisuals();
+
+        if (_mouseTarget != null) _mouseTarget.SetParent(null);
+        if (_lassoVisual != null) _lassoVisual.SetParent(null);
     }
     private void Update()
     {
