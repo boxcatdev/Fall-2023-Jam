@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Tree
-    second: {fileID: 2100000, guid: 7bd41a7d2ed8ecc43839214807f9aab7, type: 2}
+    second: {fileID: 2100000, guid: d6a1d6f50a8cdcf40b530b815133b0fc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
