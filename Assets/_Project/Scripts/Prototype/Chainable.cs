@@ -58,7 +58,7 @@ public class Chainable : MonoBehaviour
                 {
                     if (chainable != this && chainable.hasBeenHit == false)
                     {
-                        Debug.Log(name + " found: " + chainable.name);
+                        //Debug.Log(name + " found: " + chainable.name);
 
                         chainable.TriggerHit();
 
@@ -113,9 +113,15 @@ public class Chainable : MonoBehaviour
         Destroy(gameObject, 1);
 
         //despawn enemy
-        if (waveManager != null) waveManager.RemoveEnemy();
+        StartCoroutine(RemoveEnemy(0.99f));
     }
 
+    IEnumerator RemoveEnemy(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (waveManager != null) waveManager.RemoveEnemy();
+    }
 
     private void OnDrawGizmos()
     {
