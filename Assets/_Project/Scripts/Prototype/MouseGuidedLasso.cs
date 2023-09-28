@@ -33,7 +33,7 @@ public class MouseGuidedLasso : MonoBehaviour
     {
         #region Lasso position
         //inputs
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        /*if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             //ToggleLasso();
             StartLasso();
@@ -41,15 +41,17 @@ public class MouseGuidedLasso : MonoBehaviour
         if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
             StopLasso();
-        }
+        }*/
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             //StartGrow();
+            StartLasso();
             StartShrink();
         }
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             //StopGrow();
+            StopLasso();
             StopShrink();
         }
 
@@ -235,8 +237,9 @@ public class MouseGuidedLasso : MonoBehaviour
         Collider[] _enemiesInRange = Physics.OverlapSphere(transform.position, lassoSize);
         for (int i = 0; i < _enemiesInRange.Length; i++)
         {
-            if (_enemiesInRange[i].gameObject.TryGetComponent(out Chainable chainable))
+            if (_enemiesInRange[i].gameObject.TryGetComponent(out Enemy enemy))
             {
+                Debug.Log("enemy hit");
                 _enemiesInRange[i].transform.position = Vector3.MoveTowards(_enemiesInRange[i].transform.position, 
                     Utility.GetMouseHitPoint(0f), pullForce * Time.deltaTime);
             }
