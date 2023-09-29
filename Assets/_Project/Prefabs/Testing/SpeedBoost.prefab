@@ -147,7 +147,7 @@ MonoBehaviour:
   _duration: 5
   _artToDisable: {fileID: 1186880248032731476}
   _pickUpEffect: {fileID: 0}
-  _pickUpSound: {fileID: 0}
+  _pickUpSound: {fileID: 8300000, guid: c2d52bdfa51582648b4aba147c189065, type: 3}
 --- !u!65 &2726562053853205657
 BoxCollider:
   m_ObjectHideFlags: 0

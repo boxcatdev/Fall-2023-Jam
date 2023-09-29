@@ -6,7 +6,7 @@ public class HealthPickUp : MonoBehaviour
 {
     [SerializeField] private int _healthGained;
     [SerializeField] private ParticleSystem _pickUpEffect;
-    [SerializeField] private AudioSource _pickUpSound;
+    [SerializeField] private AudioClip _pickUpSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,7 +15,7 @@ public class HealthPickUp : MonoBehaviour
         {
             health.Heal(_healthGained);
             if (_pickUpEffect != null) Instantiate(_pickUpEffect, transform.position, transform.rotation);
-            if (_pickUpSound != null) _pickUpSound.Play();
+            if (_pickUpSound != null) Instantiate(_pickUpSound, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

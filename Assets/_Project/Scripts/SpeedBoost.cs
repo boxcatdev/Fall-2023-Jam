@@ -9,7 +9,7 @@ public class SpeedBoost : MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private GameObject _artToDisable;
     [SerializeField] ParticleSystem _pickUpEffect;
-    [SerializeField] AudioSource _pickUpSound;
+    [SerializeField] AudioClip _pickUpSound;
 
     private Collider _collider;
     private void OnTriggerEnter(Collider other)
@@ -35,7 +35,7 @@ public class SpeedBoost : MonoBehaviour
         controller.MoveSpeed += _moveSpeedIncrease;
         controller.SprintSpeed += _moveSpeedIncrease;
         if(_pickUpEffect != null) Instantiate(_pickUpEffect, transform.position, transform.rotation);
-        if (_pickUpSound != null) _pickUpSound.Play();
+        if (_pickUpSound != null) Instantiate(_pickUpSound, transform.position, transform.rotation);
 
         yield return new WaitForSeconds(_duration);
 

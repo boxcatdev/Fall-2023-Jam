@@ -112,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthGained: 0
   _pickUpEffect: {fileID: 0}
-  _pickUpSound: {fileID: 0}
+  _pickUpSound: {fileID: 8300000, guid: 2d774c2d89d649c4a8593d73d32d388e, type: 3}
