@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class MouseGuidedLasso : MonoBehaviour
 {
+    [SerializeField] ParticleSystem _ringEffect;
     [SerializeField] Transform _mouseTarget;
     [SerializeField] Transform _lassoVisual;
     [Space]
@@ -28,6 +29,8 @@ public class MouseGuidedLasso : MonoBehaviour
 
         if (_mouseTarget != null) _mouseTarget.SetParent(null);
         if (_lassoVisual != null) _lassoVisual.SetParent(null);
+
+        ParticleSystem.ShapeModule ps = _ringEffect.GetComponent<ParticleSystem>().shape;
     }
     private void Update()
     {
