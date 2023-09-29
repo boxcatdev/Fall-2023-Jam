@@ -332,6 +332,31 @@ MonoBehaviour:
   growRate: 2.5
   isMovingLasso: 0
   isChangingSize: 0
+--- !u!114 &698085550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698085538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42847a3ca4a7ffb4c8b80b17f609098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitRange: 3
+--- !u!114 &747030135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5188985826981123344, guid: da92f89647bf594498efd35791ba5089,
+    type: 3}
+  m_PrefabInstance: {fileID: 966428128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &793445946
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,22 +558,22 @@ PrefabInstance:
     - target: {fileID: 6321760222476224932, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
       propertyPath: _waveCounter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2008365253}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
       propertyPath: _countdownTimer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 747030135}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
       propertyPath: waves.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
@@ -568,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
       propertyPath: waves.Array.data[1].enemyTypes.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
@@ -578,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
       propertyPath: waves.Array.data[1].enemyTypes.Array.data[1].count
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
@@ -599,7 +624,7 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[1].enemyTypes.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 4818515034928931640, guid: 443066e867978de418e1bf03a3e89365,
+      objectReference: {fileID: 7765969812916127298, guid: 705b59dd0d67c334f8459fd10cab7551,
         type: 3}
     - target: {fileID: 6321760222476224933, guid: 2c0f11f917db6a146802d4f1ae12a965,
         type: 3}
@@ -980,7 +1005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1750694639
 Transform:
   m_ObjectHideFlags: 0
@@ -1049,7 +1074,7 @@ MonoBehaviour:
   _damage: 0
   _attackSpeed: 0
   _attackRange: 0
-  _isRanged: 0
+  _isRanged: 1
   _projectile: {fileID: 0}
   _projectileSpeed: 0
 --- !u!114 &1750694643
@@ -1165,6 +1190,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2008365253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5188985827318458164, guid: da92f89647bf594498efd35791ba5089,
+    type: 3}
+  m_PrefabInstance: {fileID: 966428128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2096347224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1356654614794754778, guid: 2105da18a2ac2e342ac9000039c224ab,

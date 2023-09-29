@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3070620349703264790}
   - component: {fileID: 3070620349703264791}
   - component: {fileID: 3070620349703264788}
+  - component: {fileID: 2478424478937872452}
   m_Layer: 0
   m_Name: GoblinSprite
   m_TagString: Untagged
@@ -105,3 +106,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2478424478937872452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3070620349703264873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e937c2ce9a11c184eb7c4915d590824d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

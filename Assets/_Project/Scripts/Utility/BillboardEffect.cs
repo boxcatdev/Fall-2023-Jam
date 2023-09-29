@@ -11,7 +11,7 @@ public class BillboardEffect : MonoBehaviour
         cam = Camera.main;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         #region Update Direction
 
