@@ -8,8 +8,8 @@ public class Chainable : MonoBehaviour
     private MeshRenderer meshRenderer;
     private WaveManager waveManager;
 
-    [SerializeField] Material defaultMat;
-    [SerializeField] Material hitMat;
+    //[SerializeField] Material defaultMat;
+    //[SerializeField] Material hitMat;
 
     [SerializeField] LineRenderer lightningPrefab;
 
@@ -28,19 +28,7 @@ public class Chainable : MonoBehaviour
     }
     private void Start()
     {
-        if(!hasBeenHit)
-            if(defaultMat != null) meshRenderer.material = defaultMat;
-        else
-            if (hitMat != null) meshRenderer.material = hitMat;
-    }
 
-    private void LateUpdate()
-    {
-        /*if(hasBeenHit)
-        {
-            Destroy(GetComponent<Enemy>());
-            Destroy(gameObject, 1);
-        }*/
     }
 
     public void DoHitCheck()
@@ -58,8 +46,6 @@ public class Chainable : MonoBehaviour
                 {
                     if (chainable != this && chainable.hasBeenHit == false)
                     {
-                        //Debug.Log(name + " found: " + chainable.name);
-
                         chainable.TriggerHit();
 
                         //line rendering
@@ -68,20 +54,6 @@ public class Chainable : MonoBehaviour
                     }
                 }
             }
-
-            /*if (colliders[i].TryGetComponent(out Chainable chainable))
-            {
-                if (chainable != this && chainable.hasBeenHit == false)
-                {
-                    Debug.Log(name + " found: " + chainable.name);
-
-                    chainable.TriggerHit();
-
-                    //line rendering
-                    startCoords.Add(transform.position); //if(!startCoords.Contains(transform.position)) 
-                    endCoords.Add(chainable.transform.position); //if(!endCoords.Contains(chainable.transform.position)) 
-                }
-            }*/
         }
     }
 
@@ -89,7 +61,7 @@ public class Chainable : MonoBehaviour
     {
         hasBeenHit = true;
 
-        if (hitMat != null) meshRenderer.material = hitMat;
+        //if (hitMat != null) meshRenderer.material = hitMat;
 
         DoHitCheck();
 
