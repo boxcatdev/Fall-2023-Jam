@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18026775, g: 0.22569546, b: 0.30691507, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -308,9 +308,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &19238354
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -468,9 +467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 0}
   hitMat: {fileID: 0}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!4 &37699411
 Transform:
   m_ObjectHideFlags: 0
@@ -919,9 +917,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &68231795
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1612,9 +1609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &136049259
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8662,9 +8658,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &347628319
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9648,9 +9643,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &430147576
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10671,9 +10665,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &521521354
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12519,9 +12512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &700860340
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13649,9 +13641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &805311617
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13937,9 +13928,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &827913145
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16298,9 +16288,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1020742904
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17075,9 +17064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1071047030
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18900,9 +18888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1200866252
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20004,14 +19991,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264083841}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 987.9, y: 3.625, z: 3.0999985}
+  m_LocalRotation: {x: 0.404488, y: -0.25175703, z: 0.12440357, w: 0.870363}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50.062, y: -31.728, z: 1.15}
 --- !u!4 &1269143337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 391842177121839962, guid: e75b86aafba67e245bc366161c5896a9,
@@ -20119,9 +20106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 0}
   hitMat: {fileID: 0}
+  lightningPrefab: {fileID: 0}
   hitRange: 1.5
-  canTriggerHits: 1
-  hasBeenHit: 0
 --- !u!1 &1278183946
 GameObject:
   m_ObjectHideFlags: 0
@@ -20157,9 +20143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1278183948
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21892,9 +21877,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1364887274
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24266,9 +24250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1516594658
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25810,9 +25793,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1632224596
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26559,9 +26541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1694715409
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -26841,9 +26822,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1714413068
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -27453,9 +27433,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1744886181
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -27729,9 +27708,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1764115928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -28436,9 +28414,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 1
 --- !u!54 &1820740528
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29535,9 +29512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMat: {fileID: 2100000, guid: 95d4f69d217c97a4e95c1866b97775e9, type: 2}
   hitMat: {fileID: 2100000, guid: f3cc04c54c7bdb44192ca108140ddd90, type: 2}
+  lightningPrefab: {fileID: 0}
   hitRange: 3
-  canTriggerHits: 0
-  hasBeenHit: 0
 --- !u!135 &1902184824
 SphereCollider:
   m_ObjectHideFlags: 0
