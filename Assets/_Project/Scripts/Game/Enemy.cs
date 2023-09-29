@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(!_onCooldown && !_isRanged && other.GetComponent<Lasso>())
+        if(!_onCooldown && !_isRanged && other.GetComponent<Health>())
         {
             _playerHealth.TakeDamage(_damage);
             _onCooldown = true;

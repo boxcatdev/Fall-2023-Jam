@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private Slider _healthSlider;
     [SerializeField] private ParticleSystem _deathEffect;
+    [SerializeField] private AudioClip _hitSound;
 
 
     // Start is called before the first frame update
@@ -26,10 +27,8 @@ public class Health : MonoBehaviour
         if(_currentHealth <= 0)
         {
             Destroy(gameObject);
-            if(_deathEffect != null)
-            {
-                Instantiate(_deathEffect, transform.position, Quaternion.identity);
-            }
+            if(_deathEffect != null) Instantiate(_deathEffect, transform.position, Quaternion.identity);
+            if (_hitSound != null) Instantiate(_hitSound, transform.position, transform.rotation);
         }
 
         RefreshUI();
