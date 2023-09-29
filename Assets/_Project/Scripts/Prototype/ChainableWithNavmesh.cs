@@ -19,6 +19,8 @@ public class ChainableWithNavmesh : MonoBehaviour
         }
     }
 
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
