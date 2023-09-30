@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum EnemyState { Idle, Walk, Attack}
 public class Enemy : MonoBehaviour
 {
+    public EnemyState enemyState { get; private set; }
+
     [SerializeField] private GameObject _lookAtPoint;
     [SerializeField] private int _damage;
     [SerializeField] private float _attackSpeed;
