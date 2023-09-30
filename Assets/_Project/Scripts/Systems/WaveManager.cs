@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class WaveManager : MonoBehaviour
@@ -11,37 +12,46 @@ public class WaveManager : MonoBehaviour
 
     //properties
     [Header("Wave Properties")]
-    public float initialStartDelay = 5.0f;
+    //public float initialStartDelay = 5.0f;
     [SerializeField]
     private TextMeshProUGUI _waveCounter;
     [SerializeField]
     private TextMeshProUGUI _countdownTimer;
+    [SerializeField]
+    private TextMeshProUGUI _enemyCounter;
 
     //waves
     [Space]
     public Wave[] waves;
     private Queue<Wave> _waveQueue;
+    //public int currentWaveNum;
     public int currentWaveNum { get; private set; }
+    private Wave _currentWave;
+
+    public UnityEvent OnWinCondition;
 
     //private
-    private bool _hasStarted = false;
-    private bool _canSpawn = false;
-
-    [Header("Debug")]
-    [SerializeField]
+    private bool _updateTimer = false;
+    private float _spawnCountdown;
     private int _enemiesLeft = 0;
 
-    private bool _waveStart = false;
-    private bool _spawnBool = true;
-    [SerializeField]
-    private float _spawnTimer;
+    private bool _canSpawn = false;
+    //private bool _hasStarted = false;
 
-    #region Struct
+    //[Header("Debug")]
+    //[SerializeField]
+
+    //private bool _waveStart = false;
+    //private bool _spawnBool = true;
+    //[SerializeField]
+    //private float _spawnTimer;
+
+    #region Structs
     [Serializable]
     public struct Wave
     {
-        [Tooltip("Spawn all the enemies in the wave at once.")]
-        public bool spawnAll;
+        /*[Tooltip("Spawn all the enemies in the wave at once.")]
+        public bool spawnAll;*/
         [Tooltip("Delay before starting this wave.")]
         public float startDelay;
         [Tooltip("Time between each enemy being spawned")]
@@ -61,20 +71,28 @@ public class WaveManager : MonoBehaviour
     {
         spawner = GetComponent<Spawner>();
         if (spawner == null) Debug.LogError("Missing spawner reference.");
+
+        SetupQueue();
     }
     private void Start()
     {
-        SetupQueue();
+        currentWaveNum = 0;
+
+        if (_waveCounter != null) _waveCounter.text = "";
+        if (_enemyCounter != null) _enemyCounter.text = "";
+
+        StartCoroutine(DelayWaveStart());
     }
     private void Update()
     {
-        if (_canSpawn == false) return;
+        #region Old
+        /*if (_canSpawn == false) return;
 
         #region Timer
-        /*if(_spawnBool == true)
+        *//*if(_spawnBool == true)
         {
             _spawnTimer -= Time.deltaTime;
-        }*/
+        }*//*
         #endregion
 
         #region Before Waves
@@ -103,13 +121,13 @@ public class WaveManager : MonoBehaviour
                 _waveStart = true;
             }
 
-            /*if(_spawnBool == false)
+            *//*if(_spawnBool == false)
             {
                 _spawnTimer = _waveQueue.Peek().startDelay;
                 _spawnBool = true;
             }
 
-            if (_spawnTimer > 0) return;*/
+            if (_spawnTimer > 0) return;*//*
 
             if(_waveQueue.Count > 0)
             {
@@ -167,6 +185,26 @@ public class WaveManager : MonoBehaviour
 
             #endregion
         }
+        #endregion*/
+        #endregion
+
+        #region New Coroutine Method
+        //new coroutine method
+        if (_updateTimer)
+        {
+            _spawnCountdown -= Time.deltaTime;
+
+            if (_countdownTimer != null) _countdownTimer.gameObject.SetActive(true);
+
+            if (_spawnCountdown <= 0)
+            {
+                if (_countdownTimer != null) _countdownTimer.gameObject.SetActive(false);
+            }
+            else
+            {
+                if (_countdownTimer != null) _countdownTimer.text = Utility.DisplayTimeSeconds(_spawnCountdown);
+            }
+        }
         #endregion
     }
     #endregion
@@ -175,6 +213,16 @@ public class WaveManager : MonoBehaviour
     {
         Debug.Log("RemoveEnemy()");
         _enemiesLeft--;
+
+        if (_enemyCounter != null) _enemyCounter.text = "Enemies: " + _enemiesLeft.ToString();
+
+        if (_enemiesLeft <= 0)
+        {
+            if (_waveQueue.Count > 0)
+                StartCoroutine(DelayWaveStart());
+            else
+                WinCondition();
+        }
     }
     private void SetupQueue()
     {
@@ -197,6 +245,65 @@ public class WaveManager : MonoBehaviour
             Debug.LogError("Requires at least 1 enemy wave.");
         }
     }
+    private void DoWaveStuff()
+    {
+        //Debug.Log("DoWaveStuff()");
 
+        //update wave display
+        currentWaveNum++;
+        if (_waveCounter != null) _waveCounter.text = "Wave: " + currentWaveNum.ToString();
 
+        // loop through wave properties
+
+        int spawnPointCounter = 0;
+        //spawn all the enemies at once
+        foreach (var type in _currentWave.enemyTypes)
+        {
+            if (type.prefab != null)
+                Debug.LogFormat("Spawning Enemy Type {0}", type.prefab);
+
+            //each type of enemy
+            for (int i = 0; i < type.count; i++)
+            {
+                //Vector3 spawnPoint = spawner.GetRandomSpawnPoint();
+
+                Vector3 spawnPoint = Vector3.zero;
+
+                if (spawnPointCounter < spawner.GetSpawnPointCount())
+                    spawnPoint = spawner.GetSpecificSpawnPoint(spawnPointCounter);
+                else
+                    spawnPoint = spawner.GetSpecificSpawnPoint(spawnPointCounter - spawner.GetSpawnPointCount());
+
+                Instantiate(type.prefab, spawnPoint, Quaternion.identity);
+
+                spawnPointCounter++;
+            }
+
+            _enemiesLeft += type.count;
+
+            if (_enemyCounter != null) _enemyCounter.text = "Enemies: " + _enemiesLeft.ToString();
+
+        }
+
+        //Debug.LogFormat("Enemies Left: {0}", _enemiesLeft);
+    }
+    private void WinCondition()
+    {
+        OnWinCondition?.Invoke();
+    }
+
+    IEnumerator DelayWaveStart()
+    {
+        _currentWave = _waveQueue.Dequeue();
+
+        _updateTimer = true;
+
+        _spawnCountdown = _currentWave.startDelay;
+
+        yield return new WaitForSeconds(_currentWave.startDelay);
+
+        _updateTimer = false;
+
+        DoWaveStuff();
+    }
 }

@@ -87,7 +87,7 @@ public class Chainable : MonoBehaviour
         Destroy(gameObject, 1);
 
         //despawn enemy
-        StartCoroutine(RemoveEnemy(0.99f));
+        StartCoroutine(RemoveEnemy(0.96f));
     }
 
     IEnumerator RemoveEnemy(float delay)
