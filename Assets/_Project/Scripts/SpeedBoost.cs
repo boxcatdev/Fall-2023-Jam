@@ -9,7 +9,9 @@ public class SpeedBoost : MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private GameObject _orbToDisable;
     [SerializeField] ParticleSystem _pickUpEffect;
-    [SerializeField] AudioClip _pickUpSound;
+    [SerializeField] AudioSource _pickUpSound;
+    [SerializeField] private float _rotateSpeed;
+    [SerializeField] private Vector3 _rotationDirection;
 
     private Collider _collider;
     private MeshRenderer _artToDisable;
@@ -25,6 +27,12 @@ public class SpeedBoost : MonoBehaviour
     {
         _collider = GetComponent<Collider>();
         _artToDisable = GetComponent<MeshRenderer>();
+        _pickUpSound = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        transform.Rotate(_rotateSpeed * _rotationDirection * Time.deltaTime);
     }
 
     public IEnumerator ApplySpeedBoost(ThirdPersonController controller)
@@ -38,7 +46,7 @@ public class SpeedBoost : MonoBehaviour
         controller.MoveSpeed += _moveSpeedIncrease;
         controller.SprintSpeed += _moveSpeedIncrease;
         if(_pickUpEffect != null) Instantiate(_pickUpEffect, transform.position, transform.rotation);
-        if (_pickUpSound != null) Instantiate(_pickUpSound, transform.position, transform.rotation);
+        if (_pickUpSound != null) _pickUpSound.Play();
 
         yield return new WaitForSeconds(_duration);
 
