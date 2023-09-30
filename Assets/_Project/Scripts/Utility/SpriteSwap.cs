@@ -13,6 +13,7 @@ public class SpriteSwap : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private Enemy enemy;
 
     private void Awake()
     {
@@ -21,10 +22,15 @@ public class SpriteSwap : MonoBehaviour
 
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        enemy = GetComponentInParent<Enemy>();
     }
     private void Update()
     {
-        if (agent != null) Debug.Log(agent.speed);
+        /*if (agent != null)
+        {
+            Debug.Log(agent.speed);
+            //agent.
+        }*/
     }
     private void LateUpdate()
     {

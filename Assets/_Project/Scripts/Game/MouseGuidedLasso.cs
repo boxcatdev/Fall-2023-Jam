@@ -2,19 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MouseGuidedLasso : MonoBehaviour
 {
     [SerializeField] Transform _mouseTarget;
     [SerializeField] Transform _lassoVisual;
     [Space]
-    public int pullForce;
-    public float lassoSize = 0.0f;
-    public float maxSize = 5.0f;
-    public float growRate = 0.01f;
-    [Space] //hide these later, only used for testing
-    public bool isMovingLasso = false;
-    public bool isChangingSize = false;
+    [SerializeField] private int pullForce;
+    [SerializeField] private float lassoSize = 0.0f;
+    [SerializeField] private float maxSize = 5.0f;
+    [SerializeField] private float growRate = 0.01f;
+
+    [Header("Cooldown")]
+    [SerializeField] Image _cooldownDisplay;
+    [SerializeField] float _cooldownTime;
+    
+    private bool _canLasso = true;
+    private bool _cooldownStarted = false;
+    private float _countdown;
+
+    //private these later, only used for testing
+    private bool isMovingLasso = false;
+    private bool isChangingSize = false;
 
     private StarterAssets.StarterAssetsInputs inputs;
 
@@ -33,33 +43,26 @@ public class MouseGuidedLasso : MonoBehaviour
     {
         #region Lasso position
         //inputs
-        /*if (Mouse.current.rightButton.wasPressedThisFrame)
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
-            //ToggleLasso();
-            StartLasso();
+            if (_canLasso)
+            {
+                StartLasso();
+                StartShrink();
+            }
         }
         if (Mouse.current.rightButton.wasReleasedThisFrame)
         {
-            StopLasso();
-        }*/
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            //StartGrow();
-            StartLasso();
-            StartShrink();
-        }
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
-        {
-            //StopGrow();
-            StopLasso();
-            StopShrink();
+            if (_canLasso)
+            {
+                StopLasso();
+                StopShrink();
+                _canLasso = false;
+            }
         }
 
         //change cursor state
         UpdateCursorState();
-
-        //enable/disable visual
-        //RefreshVisuals();
 
         //move target to mouse position
         if (_lassoVisual != null && _mouseTarget != null)
@@ -88,8 +91,45 @@ public class MouseGuidedLasso : MonoBehaviour
             ScaleLasso(lassoSize);
         }
         #endregion
+
+        #region Cooldown
+
+        if(_canLasso == false)
+        {
+            if(_cooldownStarted == false)
+            {
+                //start cooldown
+                _cooldownStarted = true;
+                _countdown = _cooldownTime;
+            }
+
+            if(_countdown >= 0)
+            {
+                _countdown -= Time.deltaTime;
+            }
+            else
+            {
+                if(_cooldownStarted == true && _canLasso == false)
+                {
+                    //end lasso
+                    _canLasso = true;
+                    _cooldownStarted = false;
+                }
+            }
+
+            RefreshCooldownDisplay();
+        }
+
+        #endregion
     }
     #region Helpers
+    private void RefreshCooldownDisplay()
+    {
+        if(_cooldownDisplay != null)
+        {
+            _cooldownDisplay.fillAmount = 1 - (_countdown / _cooldownTime);
+        }
+    }
     private void UpdateCursorState()
     {
         //change cursor state
