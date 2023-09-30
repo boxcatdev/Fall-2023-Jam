@@ -23,23 +23,23 @@ public class Enemy : MonoBehaviour
     private float _currentDamageCooldown;
     private bool _onCooldown = false;
 
-    private void OnTriggerEnter(Collider other)
+/*    private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<Enemy>())
         {
             //need to make a enemies not get lasso'd inside of eachother
             _rb.Sleep();
         }
-    }
+    }*/
 
-    private void OnTriggerStay(Collider other)
+/*    private void OnTriggerStay(Collider other)
     {
         if(!_onCooldown && !_isRanged && other.GetComponent<Health>())
         {
             _playerHealth.TakeDamage(_damage);
             _onCooldown = true;
         }
-    }
+    }*/
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();

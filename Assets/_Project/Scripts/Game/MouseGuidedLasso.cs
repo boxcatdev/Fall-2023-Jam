@@ -277,7 +277,7 @@ public class MouseGuidedLasso : MonoBehaviour
         Debug.LogWarning("DoLassoAction()");
 
         //copied from LassoProjectile but substituting variables
-        Collider[] _enemiesInRange = Physics.OverlapSphere(transform.position, lassoSize);
+        Collider[] _enemiesInRange = Physics.OverlapSphere(Utility.GetMouseHitPoint(0f), lassoSize);
         for (int i = 0; i < _enemiesInRange.Length; i++)
         {
             if (_enemiesInRange[i].gameObject.TryGetComponent(out Enemy enemy))
@@ -289,4 +289,9 @@ public class MouseGuidedLasso : MonoBehaviour
         }
     }
     #endregion
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(Utility.GetMouseHitPoint(0f), lassoSize);
+    }
 }

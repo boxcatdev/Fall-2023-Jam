@@ -41,10 +41,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2451652637491764205}
     m_Modifications:
+    - target: {fileID: 2231099656060069108, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658383508595797335, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6060325804226862926, guid: eac44ac154f493c41a88d3f111d6134b,
         type: 3}
       propertyPath: m_Name
       value: Bush_Final
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060325804226862926, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7704111783024089296, guid: eac44ac154f493c41a88d3f111d6134b,
         type: 3}
@@ -116,10 +131,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2451652637491764205}
     m_Modifications:
+    - target: {fileID: 2231099656060069108, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658383508595797335, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6060325804226862926, guid: eac44ac154f493c41a88d3f111d6134b,
         type: 3}
       propertyPath: m_Name
       value: Bush_Final (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060325804226862926, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7704111783024089296, guid: eac44ac154f493c41a88d3f111d6134b,
         type: 3}
@@ -191,10 +221,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2451652637491764205}
     m_Modifications:
+    - target: {fileID: 2231099656060069108, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658383508595797335, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6060325804226862926, guid: eac44ac154f493c41a88d3f111d6134b,
         type: 3}
       propertyPath: m_Name
       value: Bush_Final (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6060325804226862926, guid: eac44ac154f493c41a88d3f111d6134b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7704111783024089296, guid: eac44ac154f493c41a88d3f111d6134b,
         type: 3}
