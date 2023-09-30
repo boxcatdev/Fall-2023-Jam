@@ -12,11 +12,11 @@ public class Taser : MonoBehaviour
     [SerializeField] Image _cooldownDisplay;
 
     [SerializeField] float hitRange;
+    [SerializeField] private float _cooldownTime;
 
     private bool _canTase;
     private bool _cooldownStarted;
     private float _countdown;
-    private float _cooldownTime;
 
 
     private void Awake()

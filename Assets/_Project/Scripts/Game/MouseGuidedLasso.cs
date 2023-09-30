@@ -183,14 +183,9 @@ public class MouseGuidedLasso : MonoBehaviour
     /// <param name="scale"></param>
     private void ScaleLasso(float scale)
     {
-        ParticleSystem.ShapeModule ps = _lassoVisual.GetComponentInChildren<ParticleSystem>().shape;
-/*        Transform child = _lassoVisual.GetChild(0);
-
-        if (child.localScale.x == scale) return;
-
-        Vector3 adjustedScale = new Vector3(scale, child.localScale.y, scale);
-        child.localScale = adjustedScale;*/
+        ParticleSystem.ShapeModule ps = _ringEffect.shape;
         ps.radius = scale;
+
     }
     #endregion
 
