@@ -76,6 +76,10 @@ public class WaveManager : MonoBehaviour
     }
     private void Start()
     {
+        StartWaves();
+    }
+    public void StartWaves()
+    {
         currentWaveNum = 0;
 
         if (_waveCounter != null) _waveCounter.text = "";

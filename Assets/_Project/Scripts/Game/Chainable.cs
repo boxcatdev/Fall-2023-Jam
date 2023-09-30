@@ -8,6 +8,7 @@ public class Chainable : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     private WaveManager waveManager;
+    private Enemy enemy;
 
     //[SerializeField] Material defaultMat;
     //[SerializeField] Material hitMat;
@@ -26,6 +27,7 @@ public class Chainable : MonoBehaviour
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         waveManager = FindObjectOfType<WaveManager>();
+        enemy = GetComponent<Enemy>();
     }
 
     public void DoHitCheck()
@@ -67,6 +69,8 @@ public class Chainable : MonoBehaviour
 
     public void DoHitEffect()
     {
+        enemy.UpdateEnemyState(EnemyState.Hurt);
+
         //create chain lightning effect
         for (int i = 0; i < startCoords.Count; i++)
         {

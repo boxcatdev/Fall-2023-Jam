@@ -582,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &251901535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 6321760222476224933, guid: 2b903e5140b0f424ebd068e5fbd7f3bf,
         type: 3}
       propertyPath: waves.Array.data[0].startDelay
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6321760222476224933, guid: 2b903e5140b0f424ebd068e5fbd7f3bf,
         type: 3}
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
+  m_Color: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3628,3 +3628,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973940929}
   m_CullTransparentMesh: 1
+--- !u!1001 &9124342090775871778
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576845392805870880, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467981393492639717, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_Name
+      value: WitchDialogueSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124342089637098074, guid: 3747523a6d2d2d6438f93e96f50388f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3747523a6d2d2d6438f93e96f50388f1, type: 3}
