@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 071cb78d1938e22499a29f709d2bb720
+guid: 779fd671cbe16874198efb91d06abbae
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,7 +140,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GoblinWalkBack_0
+      name: GoblinWalkFront_0
       rect:
         serializedVersion: 2
         x: 0
@@ -154,14 +154,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 350acdf09655ddb4cac18fcf19683a16
-      internalID: -927679117
+      spriteID: 4c921f722a093e942be50a611aade34d
+      internalID: -884129187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinWalkBack_1
+      name: GoblinWalkFront_1
       rect:
         serializedVersion: 2
         x: 48
@@ -175,14 +175,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 827e3f17e9c092d40b6e98bf6e7edc6f
-      internalID: -2064474704
+      spriteID: db8a962e16631df4ea3b8357520dfb69
+      internalID: 442461211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinWalkBack_2
+      name: GoblinWalkFront_2
       rect:
         serializedVersion: 2
         x: 96
@@ -196,14 +196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7c979e75839fb045b89dfd0ff3846c8
-      internalID: -56893126
+      spriteID: 3c39519a62006a645bdcbc5ee8f632d2
+      internalID: -2096869994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GoblinWalkBack_3
+      name: GoblinWalkFront_3
       rect:
         serializedVersion: 2
         x: 144
@@ -217,8 +217,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61a9d78f4bd1a2643955a8a0160bec59
-      internalID: 209580188
+      spriteID: f04206860ae6577428a3e8a3499815b5
+      internalID: 610116821
       vertices: []
       indices: 
       edges: []
@@ -226,7 +226,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 7a0ac0b778b8d1f4dbc13a604613f436
+    spriteID: db727103b59d6274d8d888c558b230cc
     internalID: 0
     vertices: []
     indices: 
@@ -234,10 +234,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GoblinWalkBack_2: -56893126
-      GoblinWalkBack_3: 209580188
-      GoblinWalkBack_0: -927679117
-      GoblinWalkBack_1: -2064474704
+      GoblinWalkFront_0: -884129187
+      GoblinWalkFront_1: 442461211
+      GoblinWalkFront_3: 610116821
+      GoblinWalkFront_2: -2096869994
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

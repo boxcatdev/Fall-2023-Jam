@@ -25,6 +25,8 @@ public class WaveManager : MonoBehaviour
     public Wave[] waves;
     private Queue<Wave> _waveQueue;
     //public int currentWaveNum;
+    public bool wavesInProgress { get; private set; }
+
     public int currentWaveNum { get; private set; }
     private Wave _currentWave;
 
@@ -36,7 +38,6 @@ public class WaveManager : MonoBehaviour
     private int _enemiesLeft = 0;
 
     private bool _canSpawn = false;
-    //private bool _hasStarted = false;
 
     //[Header("Debug")]
     //[SerializeField]
@@ -76,10 +77,12 @@ public class WaveManager : MonoBehaviour
     }
     private void Start()
     {
-        StartWaves();
+        //StartWaves();
     }
     public void StartWaves()
     {
+        wavesInProgress = true;
+
         currentWaveNum = 0;
 
         if (_waveCounter != null) _waveCounter.text = "";
@@ -293,6 +296,8 @@ public class WaveManager : MonoBehaviour
     }
     private void WinCondition()
     {
+        wavesInProgress = false;
+
         OnWinCondition?.Invoke();
     }
 
