@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum EnemyState { Idle, Walk, Attack}
+public enum EnemyState { Idle, Walk, Attack, Hurt}
 public class Enemy : MonoBehaviour
 {
     public EnemyState enemyState { get; private set; }
+    private SpriteSwap _spriteSwap;
 
     [SerializeField] private GameObject _lookAtPoint;
     [SerializeField] private int _damage;
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _targetPlayer = GameObject.FindGameObjectWithTag("Player");
         _playerHealth = _targetPlayer.GetComponent<Health>();
+        _spriteSwap = GetComponentInChildren<SpriteSwap>();
         _currentDamageCooldown = _attackSpeed;
     }
     private void Update()
@@ -80,7 +82,12 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    public void UpdateEnemyState(EnemyState state)
+    {
+        enemyState = state;
 
+        _spriteSwap.SwitchEnemyState();
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

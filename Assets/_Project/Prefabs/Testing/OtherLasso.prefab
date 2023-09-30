@@ -244,14 +244,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef84a2412493f4fb8b21e64cb4281e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ringEffect: {fileID: 0}
   _mouseTarget: {fileID: 1356654614794754778}
   _lassoVisual: {fileID: 1356654616044253995}
   pullForce: 200
   lassoSize: 0
-  maxSize: 8
-  growRate: 2.5
-  isMovingLasso: 0
-  isChangingSize: 0
+  maxSize: 12
+  growRate: 1
+  _cooldownDisplay: {fileID: 0}
+  _cooldownTime: 3
 --- !u!1 &1356654616044253994
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,7 +40,10 @@ public class MouseGuidedLasso : MonoBehaviour
         if (_mouseTarget != null) _mouseTarget.SetParent(null);
         if (_lassoVisual != null) _lassoVisual.SetParent(null);
 
-        ParticleSystem.ShapeModule ps = _ringEffect.GetComponent<ParticleSystem>().shape;
+        if(_ringEffect != null)
+        {
+            ParticleSystem.ShapeModule ps = _ringEffect.GetComponent<ParticleSystem>().shape;
+        }
     }
     private void Update()
     {

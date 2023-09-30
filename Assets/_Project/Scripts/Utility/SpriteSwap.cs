@@ -15,6 +15,11 @@ public class SpriteSwap : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Enemy enemy;
 
+    private int _animIDIdle;
+    private int _animIDAttack;
+    private int _animIDWalk;
+    private int _animIDHurt;
+
     private void Awake()
     {
         mainCam = Camera.main;
@@ -23,14 +28,69 @@ public class SpriteSwap : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         enemy = GetComponentInParent<Enemy>();
+
+        AssignAnimationIDs();
+    }
+    private void AssignAnimationIDs()
+    {
+        _animIDIdle = Animator.StringToHash("isIdle");
+        _animIDAttack = Animator.StringToHash("isAttacking");
+        _animIDWalk = Animator.StringToHash("isWalking");
+        _animIDHurt = Animator.StringToHash("isHurt");
     }
     private void Update()
     {
-        /*if (agent != null)
+        
+    }
+    public void SwitchEnemyState()
+    {
+        switch (enemy.enemyState)
         {
-            Debug.Log(agent.speed);
-            //agent.
-        }*/
+            case EnemyState.Idle:
+                IdleCase();
+                break;
+            case EnemyState.Walk:
+                WalkCase();
+                break;
+            case EnemyState.Attack:
+                AttackCase();
+                break;
+            case EnemyState.Hurt:
+                HurtCase();
+                break;
+        }
+    }
+    private void IdleCase()
+    {
+        Debug.Log("Idle");
+        animator.SetBool(_animIDAttack, false);
+        animator.SetBool(_animIDWalk, false);
+        animator.SetBool(_animIDHurt, false);
+        animator.SetBool(_animIDIdle, true);
+    }
+    private void WalkCase()
+    {
+        Debug.Log("Walk");
+        animator.SetBool(_animIDIdle, false);
+        animator.SetBool(_animIDAttack, false);
+        animator.SetBool(_animIDHurt, false);
+        animator.SetBool(_animIDWalk, true);
+    }
+    private void AttackCase()
+    {
+        Debug.Log("Attack");
+        animator.SetBool(_animIDIdle, false);
+        animator.SetBool(_animIDWalk, false);
+        animator.SetBool(_animIDHurt, false);
+        animator.SetBool(_animIDAttack, true);
+    }
+    private void HurtCase()
+    {
+        Debug.Log("Hurt");
+        animator.SetBool(_animIDIdle, false);
+        animator.SetBool(_animIDAttack, false);
+        animator.SetBool(_animIDWalk, false);
+        animator.SetBool(_animIDHurt, true);
     }
     private void LateUpdate()
     {
