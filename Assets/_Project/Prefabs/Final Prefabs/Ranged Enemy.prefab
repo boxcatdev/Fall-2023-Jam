@@ -215,10 +215,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7765969812916127298}
-  - component: {fileID: 7765969812916127311}
   - component: {fileID: 7765969812916127304}
   - component: {fileID: -3267054377445519277}
   - component: {fileID: 5359669150109904659}
+  - component: {fileID: 8304329447871464124}
   m_Layer: 0
   m_Name: Ranged Enemy
   m_TagString: Untagged
@@ -244,19 +244,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &7765969812916127311
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7765969812916127305}
-  m_Material: {fileID: 13400000, guid: 9548b8a281fb15248bf69e42d0bac83c, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7765969812916127304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +300,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &8304329447871464124
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765969812916127305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.099214
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.54960704, z: 0}
 --- !u!1 &7811789194525424886
 GameObject:
   m_ObjectHideFlags: 0
