@@ -28,10 +28,12 @@ public class MouseGuidedLasso : MonoBehaviour
     private bool isChangingSize = false;
 
     private StarterAssets.StarterAssetsInputs inputs;
+    private WaveManager waveManager;
 
     private void Awake()
     {
         inputs = FindObjectOfType<StarterAssets.StarterAssetsInputs>();
+        waveManager = FindObjectOfType<WaveManager>();
     }
     private void Start()
     {
@@ -68,7 +70,8 @@ public class MouseGuidedLasso : MonoBehaviour
         }
 
         //change cursor state
-        UpdateCursorState();
+        if(waveManager != null)
+            if(waveManager.wavesInProgress) UpdateCursorState();
 
         //move target to mouse position
         if (_lassoVisual != null && _mouseTarget != null)
