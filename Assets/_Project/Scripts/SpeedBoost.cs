@@ -7,11 +7,12 @@ public class SpeedBoost : MonoBehaviour
 {
     [SerializeField] private int _moveSpeedIncrease;
     [SerializeField] private float _duration;
-    [SerializeField] private GameObject _artToDisable;
+    [SerializeField] private GameObject _orbToDisable;
     [SerializeField] ParticleSystem _pickUpEffect;
     [SerializeField] AudioClip _pickUpSound;
 
     private Collider _collider;
+    private MeshRenderer _artToDisable;
     private void OnTriggerEnter(Collider other)
     {
         ThirdPersonController controller = other.GetComponent<ThirdPersonController>();
@@ -23,13 +24,15 @@ public class SpeedBoost : MonoBehaviour
     private void Start()
     {
         _collider = GetComponent<Collider>();
+        _artToDisable = GetComponent<MeshRenderer>();
     }
 
     public IEnumerator ApplySpeedBoost(ThirdPersonController controller)
     {
         //soft disable
         _collider.enabled = false;
-        _artToDisable.SetActive(false);
+        _artToDisable.enabled = false;
+        _orbToDisable.SetActive(false);
 
         //apply speed
         controller.MoveSpeed += _moveSpeedIncrease;
