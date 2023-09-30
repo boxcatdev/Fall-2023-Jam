@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DigitalRuby.LightningBolt;
 
 public class Chainable : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class Chainable : MonoBehaviour
     //[SerializeField] Material defaultMat;
     //[SerializeField] Material hitMat;
 
-    [SerializeField] LineRenderer lightningPrefab;
+    [SerializeField] GameObject lightningPrefab;
 
     [SerializeField] float hitRange = 3f;
 
@@ -25,10 +26,6 @@ public class Chainable : MonoBehaviour
     {
         meshRenderer = GetComponentInChildren<MeshRenderer>();
         waveManager = FindObjectOfType<WaveManager>();
-    }
-    private void Start()
-    {
-
     }
 
     public void DoHitCheck()
@@ -73,10 +70,15 @@ public class Chainable : MonoBehaviour
         //create chain lightning effect
         for (int i = 0; i < startCoords.Count; i++)
         {
-            LineRenderer trail = Instantiate(lightningPrefab, null);
-            trail.SetPosition(0, startCoords[i]);
-            trail.SetPosition(1, endCoords[i]);
-            Destroy(trail.gameObject, 1f);
+            GameObject lightningEffect = Instantiate(lightningPrefab, null);
+             var lightning = lightningEffect.GetComponent<LightningBoltScript>();
+             var lightningLine = lightningEffect.GetComponent<LineRenderer>();
+            //trail.SetPosition(0, startCoords[i]);
+            lightning.StartPosition = startCoords[i];
+            //trail.SetPosition(1, endCoords[i]);
+            lightning.EndPosition = endCoords[i];
+            //Destroy(trail.gameObject, 1f);
+            Destroy(lightningEffect, 1f);
         }
 
         //stun enemy temporarily before destroying

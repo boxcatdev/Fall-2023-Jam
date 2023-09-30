@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class Taser : MonoBehaviour
 {
     private WaveManager waveManager;
-
+    [SerializeField] AudioClip _taserSound;
+ 
     [SerializeField] float hitRange = 3f;
 
     private void Awake()
@@ -19,6 +20,7 @@ public class Taser : MonoBehaviour
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             DoHitCheck();
+            if (_taserSound != null) Instantiate(_taserSound, transform.position, transform.rotation);
         }
     }
 
