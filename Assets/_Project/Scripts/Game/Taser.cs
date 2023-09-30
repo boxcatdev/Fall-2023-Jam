@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Taser : MonoBehaviour
 {
     private WaveManager waveManager;
     [SerializeField] AudioClip _taserSound;
+    [SerializeField] Image _cooldownDisplay;
 
     [SerializeField] float hitRange;
+
+    private bool _canTase;
+    private bool _cooldownStarted;
+    private float _countdown;
+    private float _cooldownTime;
+
 
     private void Awake()
     {
