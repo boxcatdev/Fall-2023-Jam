@@ -40,10 +40,7 @@ public class MouseGuidedLasso : MonoBehaviour
         if (_mouseTarget != null) _mouseTarget.SetParent(null);
         if (_lassoVisual != null) _lassoVisual.SetParent(null);
 
-        if(_ringEffect != null)
-        {
-            ParticleSystem.ShapeModule ps = _ringEffect.GetComponent<ParticleSystem>().shape;
-        }
+        //ParticleSystem.ShapeModule ps = _ringEffect.GetComponent<ParticleSystem>().shape;
     }
     private void Update()
     {
@@ -71,7 +68,7 @@ public class MouseGuidedLasso : MonoBehaviour
         UpdateCursorState();
 
         //move target to mouse position
-        if (_lassoVisual != null && _mouseTarget != null)
+        if (_lassoVisual != null && _mouseTarget != null && _ringEffect != null)
         {
             if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint(0f);
             if (_mouseTarget.gameObject.activeInHierarchy) _mouseTarget.position = Utility.GetMouseHitPoint(0f);
@@ -142,12 +139,12 @@ public class MouseGuidedLasso : MonoBehaviour
         if (isMovingLasso)
         {
             if (Cursor.lockState == CursorLockMode.Locked) Cursor.lockState = CursorLockMode.Confined;
-            if (inputs.cursorInputForLook == true) inputs.cursorInputForLook = false;
+            //if (inputs.cursorInputForLook == true) inputs.cursorInputForLook = false;
         }
         else
         {
             if (Cursor.lockState == CursorLockMode.Confined) Cursor.lockState = CursorLockMode.Locked;
-            if (inputs.cursorInputForLook == false) inputs.cursorInputForLook = true;
+            //if (inputs.cursorInputForLook == false) inputs.cursorInputForLook = true;
         }
     }
     /// <summary>
@@ -183,12 +180,14 @@ public class MouseGuidedLasso : MonoBehaviour
     /// <param name="scale"></param>
     private void ScaleLasso(float scale)
     {
-        Transform child = _lassoVisual.GetChild(0);
+        ParticleSystem.ShapeModule ps = _lassoVisual.GetComponentInChildren<ParticleSystem>().shape;
+/*        Transform child = _lassoVisual.GetChild(0);
 
         if (child.localScale.x == scale) return;
 
         Vector3 adjustedScale = new Vector3(scale, child.localScale.y, scale);
-        child.localScale = adjustedScale;
+        child.localScale = adjustedScale;*/
+        ps.radius = scale;
     }
     #endregion
 
@@ -280,7 +279,7 @@ public class MouseGuidedLasso : MonoBehaviour
         Debug.LogWarning("DoLassoAction()");
 
         //copied from LassoProjectile but substituting variables
-        Collider[] _enemiesInRange = Physics.OverlapSphere(transform.position, lassoSize);
+        Collider[] _enemiesInRange = Physics.OverlapSphere(Utility.GetMouseHitPoint(0f), lassoSize);
         for (int i = 0; i < _enemiesInRange.Length; i++)
         {
             if (_enemiesInRange[i].gameObject.TryGetComponent(out Enemy enemy))
@@ -292,4 +291,9 @@ public class MouseGuidedLasso : MonoBehaviour
         }
     }
     #endregion
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(Utility.GetMouseHitPoint(0f), lassoSize);
+    }
 }

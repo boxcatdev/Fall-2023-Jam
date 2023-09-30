@@ -2,22 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Taser : MonoBehaviour
 {
     private WaveManager waveManager;
     [SerializeField] AudioClip _taserSound;
- 
-    [SerializeField] float hitRange = 3f;
 
-    [Header("Cooldown")]
-    [SerializeField] Image _cooldownDisplay;
-    [SerializeField] float _cooldownTime = 1.5f;
-
-    private bool _canTase = true;
-    private bool _cooldownStarted = false;
-    private float _countdown;
+    [SerializeField] float hitRange;
 
     private void Awake()
     {
@@ -81,15 +73,24 @@ public class Taser : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].TryGetComponent(out Chainable chainable))
+            if (colliders[i].TryGetComponent(out NavMeshAgent agent))
             {
-                if (chainable != this && chainable.hasBeenHit == false)
+                if (colliders[i].TryGetComponent(out Chainable chainable))
                 {
-                    Debug.Log(name + " found: " + chainable.name);
+                    if (chainable.hasBeenHit == false)
+                    {
+                        Debug.Log(name + " found: " + chainable.name);
 
-                    chainable.TriggerHit();
+                        chainable.TriggerHit();
+                    }
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, hitRange);
     }
 }

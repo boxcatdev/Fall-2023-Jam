@@ -29,6 +29,10 @@ public class Chainable : MonoBehaviour
         waveManager = FindObjectOfType<WaveManager>();
         enemy = GetComponent<Enemy>();
     }
+    private void Start()
+    {
+        
+    }
 
     public void DoHitCheck()
     {
@@ -46,7 +50,6 @@ public class Chainable : MonoBehaviour
                     if (chainable != this && chainable.hasBeenHit == false)
                     {
                         chainable.TriggerHit();
-
                         //line rendering
                         startCoords.Add(transform.position);
                         endCoords.Add(chainable.transform.position);
