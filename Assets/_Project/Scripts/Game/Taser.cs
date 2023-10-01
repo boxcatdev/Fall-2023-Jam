@@ -18,12 +18,20 @@ public class Taser : MonoBehaviour
     private bool _cooldownStarted;
     private float _countdown;
 
+    public List<Collider> collidersInRange = new List<Collider>();
+
+    private SphereCollider sphereCollider;
 
     private void Awake()
     {
         waveManager = FindObjectOfType<WaveManager>();
+        sphereCollider = GetComponent<SphereCollider>();
     }
 
+    private void Start()
+    {
+        sphereCollider.radius = hitRange;
+    }
     private void Update()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -77,7 +85,21 @@ public class Taser : MonoBehaviour
     }
     public void DoHitCheck()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1 , hitRange);
+        foreach (var collider in collidersInRange)
+        {
+            if (collider.TryGetComponent(out Chainable chainable))
+            {
+                if (chainable.hasBeenHit == false)
+                {
+                    Debug.Log(name + " found: " + chainable.name);
+
+                    chainable.TriggerHit();
+                }
+            }
+        }
+        
+
+        /*Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1 , hitRange);
 
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -93,6 +115,24 @@ public class Taser : MonoBehaviour
                     }
                 }
             }
+        }*/
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.TryGetComponent(out Chainable chainable))
+        {
+            Debug.Log("chainable added");
+            if(!collidersInRange.Contains(other))
+                collidersInRange.Add(other);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.TryGetComponent(out Chainable chainable))
+        {
+            if (collidersInRange.Contains(other))
+                collidersInRange.Remove(other);
         }
     }
 
