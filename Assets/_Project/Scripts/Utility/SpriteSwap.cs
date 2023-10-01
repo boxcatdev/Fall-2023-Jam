@@ -34,7 +34,7 @@ public class SpriteSwap : MonoBehaviour
     private void AssignAnimationIDs()
     {
         _animIDIdle = Animator.StringToHash("isIdle");
-        _animIDAttack = Animator.StringToHash("isAttacking");
+        _animIDAttack = Animator.StringToHash("doAttack");
         _animIDWalk = Animator.StringToHash("isWalking");
         _animIDHurt = Animator.StringToHash("isHurt");
     }
@@ -63,7 +63,6 @@ public class SpriteSwap : MonoBehaviour
     private void IdleCase()
     {
         Debug.Log("Idle");
-        animator.SetBool(_animIDAttack, false);
         animator.SetBool(_animIDWalk, false);
         animator.SetBool(_animIDHurt, false);
         animator.SetBool(_animIDIdle, true);
@@ -72,7 +71,6 @@ public class SpriteSwap : MonoBehaviour
     {
         Debug.Log("Walk");
         animator.SetBool(_animIDIdle, false);
-        animator.SetBool(_animIDAttack, false);
         animator.SetBool(_animIDHurt, false);
         animator.SetBool(_animIDWalk, true);
     }
@@ -82,13 +80,15 @@ public class SpriteSwap : MonoBehaviour
         animator.SetBool(_animIDIdle, false);
         animator.SetBool(_animIDWalk, false);
         animator.SetBool(_animIDHurt, false);
-        animator.SetBool(_animIDAttack, true);
+        animator.SetTrigger(_animIDAttack);
+
+        //enemy.UpdateEnemyState(EnemyState.Walk);
+
     }
     private void HurtCase()
     {
         Debug.Log("Hurt");
         animator.SetBool(_animIDIdle, false);
-        animator.SetBool(_animIDAttack, false);
         animator.SetBool(_animIDWalk, false);
         animator.SetBool(_animIDHurt, true);
     }
@@ -134,5 +134,10 @@ public class SpriteSwap : MonoBehaviour
 
         animator.SetFloat("moveX", animationDirection.x);
         animator.SetFloat("moveY", animationDirection.y);
+    }
+
+    public void AttackAnimOver()
+    {
+        enemy.AttackOver();
     }
 }
