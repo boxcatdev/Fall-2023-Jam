@@ -29,7 +29,7 @@ public class GameInstance : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
         #endregion
     }
     private void Update()
