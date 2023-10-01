@@ -444,6 +444,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8944676180371655443}
     - target: {fileID: 1642640001, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: _maxHealth
+      value: 100005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642640001, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: _healthSlider
       value: 
       objectReference: {fileID: 0}
@@ -455,6 +459,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937444499079454673, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: hitRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2937444499079454673, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: _cooldownTime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3122010578836577197, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
@@ -468,10 +482,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3122010579052869609, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
+      propertyPath: maxSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122010579052869609, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: growRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122010579052869609, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
       propertyPath: _ringEffect
       value: 
-      objectReference: {fileID: 990301375069702477, guid: 4475098070cc22b45baf1a16d71deb78,
-        type: 3}
+      objectReference: {fileID: 2135245392824183356}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_RootOrder
@@ -539,16 +562,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
+      propertyPath: MoveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
       propertyPath: BottomClamp
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: SprintSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7148261482376320848, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.193
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+--- !u!198 &2135245392824183356 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 194653374623626879, guid: 64dce48905ffd9b4293e595fa6941544,
+    type: 3}
+  m_PrefabInstance: {fileID: 2238964568788737091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2476545175356626578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544,
