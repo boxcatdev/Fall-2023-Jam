@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
             {
                 UpdateEnemyState(EnemyState.Attack);
 
-                var projectile = Instantiate(_projectile, transform.position, Quaternion.identity);
+                var projectile = Instantiate(_projectile, transform.position + Vector3.up * 2, Quaternion.identity);
                 var projectileRb = projectile.GetComponent<Rigidbody>();
                 projectileRb.AddForce(transform.forward * _projectileSpeed);
                 _onCooldown = true;
