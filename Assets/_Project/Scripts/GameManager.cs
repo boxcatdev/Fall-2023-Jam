@@ -20,12 +20,15 @@ public class GameManager : MonoBehaviour
     {
         if(Keyboard.current.escapeKey.isPressed)
         {
-            _pauseMenuUI.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
+            Pause();
         }
     }
-
+    public void Pause()
+    {
+        _pauseMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+    }
     public void ContinueButton()
     {
         _pauseMenuUI.SetActive(false);
