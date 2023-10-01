@@ -892,6 +892,18 @@ MonoBehaviour:
           m_StringArgument: MainLevel
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1740053288}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1318077472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,10 +1692,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7816056634264787629, guid: 36eab25283b060f47aff89589ce4b1ce,
+        type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816056634264787629, guid: 36eab25283b060f47aff89589ce4b1ce,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7816056634264787631, guid: 36eab25283b060f47aff89589ce4b1ce,
         type: 3}
       propertyPath: m_Name
       value: GameInstance
+      objectReference: {fileID: 0}
+    - target: {fileID: 7816056634264787631, guid: 36eab25283b060f47aff89589ce4b1ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36eab25283b060f47aff89589ce4b1ce, type: 3}

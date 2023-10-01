@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] private ParticleSystem _deathEffect;
     [SerializeField] private AudioSource _hitSound;
 
-
+    public UnityEvent OnDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +28,9 @@ public class Health : MonoBehaviour
         if (_hitSound != null) _hitSound.Play();
         if (_currentHealth <= 0)
         {
-            Destroy(gameObject);
             if(_deathEffect != null) Instantiate(_deathEffect, transform.position, Quaternion.identity);
+
+            OnDeath?.Invoke();
         }
 
         RefreshUI();
