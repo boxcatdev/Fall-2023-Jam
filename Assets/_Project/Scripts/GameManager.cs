@@ -9,6 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UniversalRendererData _renderData;
     [SerializeField] private GameObject _pauseMenuUI;
 
+    private StarterAssets.StarterAssetsInputs inputs;
+
+    private void Start()
+    {
+        inputs = FindObjectOfType<StarterAssets.StarterAssetsInputs>();
+    }
+
     private void Update()
     {
         if(Keyboard.current.escapeKey.isPressed)

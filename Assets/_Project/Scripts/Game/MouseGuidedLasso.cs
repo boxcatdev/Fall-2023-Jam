@@ -73,7 +73,7 @@ public class MouseGuidedLasso : MonoBehaviour
         //move target to mouse position
         if (_lassoVisual != null && _mouseTarget != null && _ringEffect != null)
         {
-            if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint(0f);
+            if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint(1f);
             if (_mouseTarget.gameObject.activeInHierarchy) _mouseTarget.position = Utility.GetMouseHitPoint(0f);
         }
         #endregion
@@ -91,7 +91,9 @@ public class MouseGuidedLasso : MonoBehaviour
             if(lassoSize <= 0)
             {
                 lassoSize = 0;
-                //StopShrink();
+                StopLasso();
+                StopShrink();
+                _canLasso = false;
             }
 
             ScaleLasso(lassoSize);
@@ -115,6 +117,7 @@ public class MouseGuidedLasso : MonoBehaviour
             }
             else
             {
+                _countdown = _cooldownTime;
                 if(_cooldownStarted == true && _canLasso == false)
                 {
                     //end lasso
@@ -185,7 +188,6 @@ public class MouseGuidedLasso : MonoBehaviour
     {
         ParticleSystem.ShapeModule ps = _ringEffect.shape;
         ps.radius = scale;
-
     }
     #endregion
 
