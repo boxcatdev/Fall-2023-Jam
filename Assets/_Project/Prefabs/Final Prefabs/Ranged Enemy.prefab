@@ -276,7 +276,7 @@ MonoBehaviour:
   _attackSpeed: 2
   _attackRange: 7
   _isRanged: 1
-  _projectile: {fileID: 2290269239835913570, guid: dc885cbba20bda844a9567d0d61ec816,
+  _projectile: {fileID: 3597990608860498494, guid: 71d7f6a4eb1be5844817676d1d15da7a,
     type: 3}
   _projectileSpeed: 1000
 --- !u!195 &5359669150109904659

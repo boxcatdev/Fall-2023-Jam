@@ -221,7 +221,7 @@ public class WaveManager : MonoBehaviour
         Debug.Log("RemoveEnemy()");
         _enemiesLeft--;
 
-        if (_enemyCounter != null) _enemyCounter.text = "Enemies: " + _enemiesLeft.ToString();
+        if (_enemyCounter != null) _enemyCounter.text = _enemiesLeft.ToString();
 
         if (_enemiesLeft <= 0)
         {
@@ -258,7 +258,7 @@ public class WaveManager : MonoBehaviour
 
         //update wave display
         currentWaveNum++;
-        if (_waveCounter != null) _waveCounter.text = "Wave: " + currentWaveNum.ToString();
+        if (_waveCounter != null) _waveCounter.text = currentWaveNum.ToString();
 
         // loop through wave properties
 
@@ -288,7 +288,7 @@ public class WaveManager : MonoBehaviour
 
             _enemiesLeft += type.count;
 
-            if (_enemyCounter != null) _enemyCounter.text = "Enemies: " + _enemiesLeft.ToString();
+            if (_enemyCounter != null) _enemyCounter.text =  _enemiesLeft.ToString();
 
         }
 

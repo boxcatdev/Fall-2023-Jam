@@ -117,7 +117,7 @@ public class MouseGuidedLasso : MonoBehaviour
             }
             else
             {
-                _countdown = _cooldownTime;
+                //_countdown = _cooldownTime;
                 if(_cooldownStarted == true && _canLasso == false)
                 {
                     //end lasso
