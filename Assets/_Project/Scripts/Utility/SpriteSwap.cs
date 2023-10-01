@@ -86,7 +86,7 @@ public class SpriteSwap : MonoBehaviour
     }
     private void HurtCase()
     {
-        Debug.Log("Hurt");
+        //Debug.Log("Hurt");
         animator.SetBool(_animIDIdle, false);
         animator.SetBool(_animIDAttack, false);
         animator.SetBool(_animIDWalk, false);

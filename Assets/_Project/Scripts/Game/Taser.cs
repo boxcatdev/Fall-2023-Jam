@@ -14,7 +14,7 @@ public class Taser : MonoBehaviour
     [SerializeField] float hitRange;
     [SerializeField] private float _cooldownTime;
 
-    private bool _canTase;
+    [SerializeField] private bool _canTase;
     private bool _cooldownStarted;
     private float _countdown;
 
@@ -77,7 +77,7 @@ public class Taser : MonoBehaviour
     }
     public void DoHitCheck()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, hitRange);
+        Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1 , hitRange);
 
         for (int i = 0; i < colliders.Length; i++)
         {

@@ -61,6 +61,7 @@ public class Chainable : MonoBehaviour
 
     public void TriggerHit()
     {
+
         hasBeenHit = true;
 
         //if (hitMat != null) meshRenderer.material = hitMat;
