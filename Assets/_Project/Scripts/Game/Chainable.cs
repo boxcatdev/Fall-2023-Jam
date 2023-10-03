@@ -34,7 +34,7 @@ public class Chainable : MonoBehaviour
         
     }
 
-    public void DoHitCheck()
+    public void DoHitCheck(Taser taser)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, hitRange);
 
@@ -49,7 +49,11 @@ public class Chainable : MonoBehaviour
                 {
                     if (chainable != this && chainable.hasBeenHit == false)
                     {
-                        chainable.TriggerHit();
+                        if (taser.collidersInRange.Contains(colliders[i]))
+                            taser.collidersInRange.Remove(colliders[i]);
+
+                        chainable.TriggerHit(taser);
+
                         //line rendering
                         startCoords.Add(transform.position);
                         endCoords.Add(chainable.transform.position);
@@ -59,14 +63,13 @@ public class Chainable : MonoBehaviour
         }
     }
 
-    public void TriggerHit()
+    public void TriggerHit(Taser taser)
     {
-
         hasBeenHit = true;
 
         //if (hitMat != null) meshRenderer.material = hitMat;
 
-        DoHitCheck();
+        DoHitCheck(taser);
 
         DoHitEffect();
     }

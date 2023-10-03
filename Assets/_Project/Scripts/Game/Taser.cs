@@ -93,7 +93,9 @@ public class Taser : MonoBehaviour
                 {
                     Debug.Log(name + " found: " + chainable.name);
 
-                    chainable.TriggerHit();
+                    collidersInRange.Remove(collider);
+
+                    chainable.TriggerHit(this);
                 }
             }
         }
@@ -118,14 +120,18 @@ public class Taser : MonoBehaviour
         }*/
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out Chainable chainable))
+        if (other.TryGetComponent(out Chainable chainable))
         {
             Debug.Log("chainable added");
-            if(!collidersInRange.Contains(other))
+            if (!collidersInRange.Contains(other))
                 collidersInRange.Add(other);
         }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        
     }
     private void OnTriggerExit(Collider other)
     {
