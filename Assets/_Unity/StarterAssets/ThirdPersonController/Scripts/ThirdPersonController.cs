@@ -388,5 +388,10 @@ namespace StarterAssets
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
+
+        public void CameraLock(bool settting)
+        {
+            LockCameraPosition = settting;
+        }
     }
 }
