@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private UniversalRendererData _renderData;
+    //[SerializeField] private UniversalRendererData _renderData;
     [SerializeField] private GameObject _pauseMenuUI;
 
     private StarterAssets.StarterAssetsInputs inputs;
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         inputs = FindObjectOfType<StarterAssets.StarterAssetsInputs>();
     }
 
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void PixilationToggle()
+    /*public void PixilationToggle()
     {
         if(_renderData.rendererFeatures[2].isActive)
         {
@@ -46,5 +47,5 @@ public class GameManager : MonoBehaviour
         {
             _renderData.rendererFeatures[2].SetActive(true);
         }
-    }
+    }*/
 }
