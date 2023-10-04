@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameInstance : MonoBehaviour
 {
-    public static GameInstance Instance;
+    //public static GameInstance Instance;
 
     //only for during development stuff
     public bool debug = false;
@@ -31,6 +31,11 @@ public class GameInstance : MonoBehaviour
 
         DontDestroyOnLoad(this);*/
         #endregion
+    }
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     private void Update()
     {
