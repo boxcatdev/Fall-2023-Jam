@@ -11,26 +11,27 @@ public class Taser : MonoBehaviour
     [SerializeField] AudioClip _taserSound;
     [SerializeField] Image _cooldownDisplay;
 
-    [SerializeField] float hitRange;
+    [SerializeField] float _hitRange;
+    [SerializeField] float _detectionRange = 50f;
     [SerializeField] private float _cooldownTime;
 
     [SerializeField] private bool _canTase;
     private bool _cooldownStarted;
     private float _countdown;
 
-    public List<Collider> collidersInRange = new List<Collider>();
+    //public List<Collider> collidersInRange = new List<Collider>();
 
-    private SphereCollider sphereCollider;
+    //private SphereCollider sphereCollider;
 
     private void Awake()
     {
         waveManager = FindObjectOfType<WaveManager>();
-        sphereCollider = GetComponent<SphereCollider>();
+        //sphereCollider = GetComponent<SphereCollider>();
     }
 
     private void Start()
     {
-        sphereCollider.radius = hitRange;
+        //sphereCollider.radius = _hitRange;
     }
     private void Update()
     {
@@ -85,7 +86,7 @@ public class Taser : MonoBehaviour
     }
     public void DoHitCheck()
     {
-        foreach (var collider in collidersInRange)
+        /*foreach (var collider in collidersInRange)
         {
             if (collider.TryGetComponent(out Chainable chainable))
             {
@@ -98,29 +99,52 @@ public class Taser : MonoBehaviour
                     chainable.TriggerHit(this);
                 }
             }
-        }
-        
-
-        /*Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1 , hitRange);
-
-        for (int i = 0; i < colliders.Length; i++)
+        }*/
+        /*for (int i = 0; i < colliders.Length; i++)
         {
-            if (colliders[i].TryGetComponent(out NavMeshAgent agent))
+
+        }*/
+
+        int chainFound = 0;
+        int inRange = 0;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position + Vector3.up * 1, _hitRange);
+
+        foreach (var collider in colliders)
+        {
+            if (collider.TryGetComponent(out Chainable chainable))
             {
-                if (colliders[i].TryGetComponent(out Chainable chainable))
+                chainFound++;
+
+                inRange++;
+
+                if (chainable.hasBeenHit == false)
                 {
+                    //Debug.Log(name + " found: " + chainable.name);
+
+                    chainable.TriggerHit();
+                }
+
+                /*if (Vector3.Distance(transform.position, collider.transform.position) <= _hitRange)
+                {
+                    inRange++;
+
                     if (chainable.hasBeenHit == false)
                     {
-                        Debug.Log(name + " found: " + chainable.name);
+                        //Debug.Log(name + " found: " + chainable.name);
+
 
                         chainable.TriggerHit();
                     }
-                }
+                }*/
             }
-        }*/
+        }
+
+        //Debug.LogFormat("Found: {0}; In Range: {1}", chainFound, inRange);
+        
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Chainable chainable))
         {
@@ -140,11 +164,17 @@ public class Taser : MonoBehaviour
             if (collidersInRange.Contains(other))
                 collidersInRange.Remove(other);
         }
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.black;
-        Gizmos.DrawWireSphere(transform.position, hitRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f, _hitRange * 0.75f);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f, _hitRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f, _detectionRange);
     }
 }

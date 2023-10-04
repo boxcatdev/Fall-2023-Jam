@@ -218,7 +218,7 @@ public class WaveManager : MonoBehaviour
 
     internal void RemoveEnemy()
     {
-        Debug.Log("RemoveEnemy()");
+        //Debug.Log("RemoveEnemy()");
         _enemiesLeft--;
 
         if (_enemyCounter != null) _enemyCounter.text = _enemiesLeft.ToString();

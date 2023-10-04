@@ -60,6 +60,21 @@ public static class Utility
         else
             return Vector3.zero;
     }
+    public static Vector3 GetMouseHitPoint(float modifiedYValue, LayerMask layer)
+    {
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+
+        mousePos.z = 10f;
+
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(ray, out hit, layer))
+        {
+            return new Vector3(hit.point.x, modifiedYValue, hit.point.z);
+        }
+        else
+            return Vector3.zero;
+    }
     public static Vector3 GetMouseWorldPosition()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
