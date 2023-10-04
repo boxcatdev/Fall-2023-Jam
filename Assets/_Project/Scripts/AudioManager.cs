@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     private static AudioManager Instance;
     private void Awake()
     {
-/*        #region Singleton
+        #region Singleton
         if (Instance == null)
         {
             Instance = this;
@@ -18,6 +18,6 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
-        #endregion*/
+        #endregion
     }
 }
