@@ -14,12 +14,16 @@ public class Health : MonoBehaviour
     [SerializeField] private AudioSource _hitSound;
 
     [SerializeField] private List<Image> _healthBats;
-
+    
+    [Header("Events")]
     public UnityEvent OnDeath;
 
     // Start is called before the first frame update
     void Start()
     {
+        //updates max health to match number of health bars
+        if (_healthBats.Count > 0) _maxHealth = _healthBats.Count;
+
         _currentHealth = _maxHealth;
 
         RefreshUI();
@@ -27,11 +31,13 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
+        Debug.Log("TakeDamage()");
+
         _currentHealth -= damageAmount;
         if (_hitSound != null) _hitSound.Play();
         if (_currentHealth <= 0)
         {
-            //Destroy(gameObject);
+            _currentHealth = 0;
 
             OnDeath?.Invoke();
 
@@ -55,23 +61,16 @@ public class Health : MonoBehaviour
 
     private void RefreshUI()
     {
-        for (int i = 0; i < _healthBats.Count; i++)
+        for (int i = 1; i <= _healthBats.Count; i++)
         {
-            if(i < _currentHealth)
+            if(i <= _currentHealth)
             {
-                _healthBats[i].gameObject.SetActive(true);
+                _healthBats[i - 1].gameObject.SetActive(true);
             }
             else
             {
-                _healthBats[i].gameObject.SetActive(false);
+                _healthBats[i - 1].gameObject.SetActive(false);
             }
         }
-
-        /*if (_healthSlider)
-        {
-            if (_healthSlider.maxValue != _maxHealth) _healthSlider.maxValue = _maxHealth;
-
-            if (_healthSlider.value != _currentHealth) _healthSlider.value = _currentHealth;
-        }*/
     }
 }

@@ -120,7 +120,7 @@ public class Taser : MonoBehaviour
         }*/
     }
 
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Chainable chainable))
         {
@@ -140,7 +140,7 @@ public class Taser : MonoBehaviour
             if (collidersInRange.Contains(other))
                 collidersInRange.Remove(other);
         }
-    }
+    }*/
 
     private void OnDrawGizmos()
     {
