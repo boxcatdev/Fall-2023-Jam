@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
 public class MouseGuidedLasso : MonoBehaviour
 {
@@ -29,11 +30,13 @@ public class MouseGuidedLasso : MonoBehaviour
 
     private StarterAssets.StarterAssetsInputs inputs;
     private WaveManager waveManager;
+    private DecalProjector decal;
 
     private void Awake()
     {
         inputs = FindObjectOfType<StarterAssets.StarterAssetsInputs>();
         waveManager = FindObjectOfType<WaveManager>();
+        decal = GetComponentInChildren<DecalProjector>();
     }
     private void Start()
     {
@@ -188,6 +191,8 @@ public class MouseGuidedLasso : MonoBehaviour
     {
         ParticleSystem.ShapeModule ps = _ringEffect.shape;
         ps.radius = scale;
+
+        decal.size = new Vector3(scale * 2f, scale * 2f, decal.size.z);
     }
     #endregion
 

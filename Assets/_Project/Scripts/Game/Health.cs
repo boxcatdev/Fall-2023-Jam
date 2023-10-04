@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        Debug.Log("TakeDamage()");
+        //Debug.Log("TakeDamage()");
 
         _currentHealth -= damageAmount;
         if (_hitSound != null) _hitSound.Play();

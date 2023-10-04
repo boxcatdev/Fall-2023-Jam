@@ -31,10 +31,10 @@ public class Chainable : MonoBehaviour
     }
     private void Start()
     {
-        
+        hasBeenHit = false;
     }
 
-    public void DoHitCheck(Taser taser)
+    public void DoHitCheck()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, hitRange);
 
@@ -43,33 +43,35 @@ public class Chainable : MonoBehaviour
 
         for (int i = 0; i < colliders.Length; i++)
         {
-            if(colliders[i].TryGetComponent(out NavMeshAgent agent))
+            if (colliders[i].TryGetComponent(out Chainable chainable))
             {
-                if(colliders[i].TryGetComponent(out Chainable chainable))
+                if (/*chainable != this && */chainable.hasBeenHit == false)
                 {
-                    if (chainable != this && chainable.hasBeenHit == false)
-                    {
-                        if (taser.collidersInRange.Contains(colliders[i]))
-                            taser.collidersInRange.Remove(colliders[i]);
+                    /*if (taser.collidersInRange.Contains(colliders[i]))
+                        taser.collidersInRange.Remove(colliders[i]);*/
 
-                        chainable.TriggerHit(taser);
+                    chainable.TriggerHit();
 
-                        //line rendering
-                        startCoords.Add(transform.position);
-                        endCoords.Add(chainable.transform.position);
-                    }
+                    //line rendering
+                    startCoords.Add(transform.position);
+                    endCoords.Add(chainable.transform.position);
                 }
             }
+
+            /*if(colliders[i].TryGetComponent(out NavMeshAgent agent))
+            {
+                
+            }*/
         }
     }
 
-    public void TriggerHit(Taser taser)
+    public void TriggerHit()
     {
         hasBeenHit = true;
 
         //if (hitMat != null) meshRenderer.material = hitMat;
 
-        DoHitCheck(taser);
+        DoHitCheck();
 
         DoHitEffect();
     }
