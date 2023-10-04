@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Taser : MonoBehaviour
 {
     private WaveManager waveManager;
-    [SerializeField] AudioClip _taserSound;
+    [SerializeField] AudioSource _taserSound;
     [SerializeField] Image _cooldownDisplay;
 
     [SerializeField] float _hitRange;
@@ -42,7 +42,7 @@ public class Taser : MonoBehaviour
                 _canTase = false;
 
                 DoHitCheck();
-                if (_taserSound != null) Instantiate(_taserSound, transform.position, transform.rotation);
+                //if (_taserSound != null) Instantiate(_taserSound, transform.position, transform.rotation);
             }
         }
 
@@ -121,8 +121,12 @@ public class Taser : MonoBehaviour
                 if (chainable.hasBeenHit == false)
                 {
                     //Debug.Log(name + " found: " + chainable.name);
-
                     chainable.TriggerHit();
+                    if(_taserSound.isPlaying == false)
+                    {
+                        //if (_taserSound != null) Instantiate(_taserSound, transform.position, transform.rotation);
+                        _taserSound.Play();
+                    }
                 }
 
                 /*if (Vector3.Distance(transform.position, collider.transform.position) <= _hitRange)
