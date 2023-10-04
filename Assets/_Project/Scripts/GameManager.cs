@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     //[SerializeField] private UniversalRendererData _renderData;
     [SerializeField] private GameObject _pauseMenuUI;
-
+    [SerializeField] private GameObject _deathMenuUI;
     public static GameManager Instance;
 
     private StarterAssets.StarterAssetsInputs inputs;
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.None;
         inputs = FindObjectOfType<StarterAssets.StarterAssetsInputs>();
     }
@@ -42,7 +43,6 @@ public class GameManager : MonoBehaviour
     {
         if(isPasued == false && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            Debug.Log("Key was pressed");
             Pause();
         }
         else if (isPasued = true && Keyboard.current.escapeKey.wasPressedThisFrame)
@@ -52,16 +52,15 @@ public class GameManager : MonoBehaviour
     }
     public void Pause()
     {
-        Debug.Log("funcation is called");
         _pauseMenuUI.SetActive(true);
-        inputs.cursorLocked = true;
+        inputs.cursorInputForLook = false;
         isPasued = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
     }
     public void Unpause()
     {
-        inputs.cursorLocked = false;
+        inputs.cursorInputForLook = true;
         isPasued = false;
         _pauseMenuUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -85,6 +84,15 @@ public class GameManager : MonoBehaviour
     public static void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void Death()
+    {
+        _deathMenuUI.SetActive(true);
+        inputs.cursorInputForLook = false;
+        isPasued = true;
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
     }
 
     /*public void PixilationToggle()

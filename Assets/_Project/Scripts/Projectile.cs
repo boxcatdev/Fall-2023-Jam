@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        Health health = other.GetComponent<Health>();
-        if(health != null)
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
         {
             health.TakeDamage(1);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 }

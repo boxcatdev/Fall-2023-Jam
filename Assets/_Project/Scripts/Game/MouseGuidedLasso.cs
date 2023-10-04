@@ -8,6 +8,7 @@ using UnityEngine.Rendering.Universal;
 public class MouseGuidedLasso : MonoBehaviour
 {
     [SerializeField] ParticleSystem _ringEffect;
+    [SerializeField] AudioSource _lassoSound;
     [SerializeField] Transform _mouseTarget;
     [SerializeField] Transform _lassoVisual;
     [Space]
@@ -283,7 +284,10 @@ public class MouseGuidedLasso : MonoBehaviour
     private void DoLassoAction()
     {
         Debug.LogWarning("DoLassoAction()");
-
+        if (_lassoSound.isPlaying == false)
+        {
+            _lassoSound.Play();
+        }
         //copied from LassoProjectile but substituting variables
         Collider[] _enemiesInRange = Physics.OverlapSphere(Utility.GetMouseHitPoint(0f), lassoSize);
         for (int i = 0; i < _enemiesInRange.Length; i++)
