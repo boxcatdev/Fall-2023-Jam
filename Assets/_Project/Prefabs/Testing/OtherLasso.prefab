@@ -252,6 +252,9 @@ MonoBehaviour:
   lassoSize: 0
   maxSize: 8
   growRate: 2.5
+  hitLayer:
+    serializedVersion: 2
+    m_Bits: 64
   _cooldownDisplay: {fileID: 0}
   _cooldownTime: 0
 --- !u!1 &1356654616044253994

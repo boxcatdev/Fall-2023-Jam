@@ -15,6 +15,7 @@ public class MouseGuidedLasso : MonoBehaviour
     [SerializeField] private float lassoSize = 0.0f;
     [SerializeField] private float maxSize = 5.0f;
     [SerializeField] private float growRate = 0.01f;
+    [SerializeField] private LayerMask hitLayer;
 
     [Header("Cooldown")]
     [SerializeField] Image _cooldownDisplay;
@@ -76,7 +77,7 @@ public class MouseGuidedLasso : MonoBehaviour
         //move target to mouse position
         if (_lassoVisual != null && _mouseTarget != null && _ringEffect != null)
         {
-            if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint(1f);
+            if (_lassoVisual.gameObject.activeInHierarchy) _lassoVisual.position = Utility.GetMouseHitPoint(1f, hitLayer);
             if (_mouseTarget.gameObject.activeInHierarchy) _mouseTarget.position = Utility.GetMouseHitPoint(0f);
         }
         #endregion
@@ -84,7 +85,7 @@ public class MouseGuidedLasso : MonoBehaviour
         #region Scale lasso
         if (isChangingSize)
         {
-            Debug.Log("Resizing");
+            //Debug.Log("Resizing");
             lassoSize -= growRate * Time.deltaTime;
 
             /*if(lassoSize >= maxSize)
