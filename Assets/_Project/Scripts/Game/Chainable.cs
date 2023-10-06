@@ -78,7 +78,12 @@ public class Chainable : MonoBehaviour
 
     public void DoHitEffect()
     {
+        //shock animation
         enemy.UpdateEnemyState(EnemyState.Hurt);
+
+        //countdown wave manager
+        if (waveManager != null) waveManager.RemoveEnemy();
+        //StartCoroutine(RemoveEnemy(0.96f));
 
         //create chain lightning effect
         for (int i = 0; i < startCoords.Count; i++)
@@ -98,9 +103,7 @@ public class Chainable : MonoBehaviour
         Destroy(GetComponent<Enemy>());
         Destroy(GetComponent<NavMeshAgent>());
         Destroy(gameObject, 1);
-
-        //despawn enemy
-        StartCoroutine(RemoveEnemy(0.96f));
+        
     }
 
     IEnumerator RemoveEnemy(float delay)
